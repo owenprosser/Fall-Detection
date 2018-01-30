@@ -31,3 +31,5 @@ cap.release()
  
 # Closes all the frames
 cv2.destroyAllWindows()
+
+
