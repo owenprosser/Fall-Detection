@@ -1,8 +1,8 @@
 import numpy as np
 import cv2
 
-cap = cv2.VideoCapture('test2.mp4')
-fgbg = cv2.createBackgroundSubtractorMOG2()
+cap = cv2.VideoCapture('video2.mp4')
+fgbg = cv2.createBackgroundSubtractorMOG2(500,16,True)
 kernel = np.ones((3,3),np.uint8)
 
 while(1):
@@ -10,13 +10,13 @@ while(1):
 
     fgmask = fgbg.apply(frame)
 
-    _, bgrThresh = cv2.threshold(fgmask,254,255,cv2.THRESH_BINARY)
+    _, bgrThresh = cv2.threshold(fgmask,250,255,cv2.THRESH_BINARY)
 
-    bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_OPEN, kernel)
     bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_CLOSE, kernel)
-    bgrThresh = cv2.erode(bgrThresh,kernel,iterations = 3)
+    grThresh = cv2.erode(bgrThresh,kernel,iterations = 3)
+    bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_OPEN, kernel)
 
-    #cv2.imshow('fgmask',frame)
+    #cv2.imshow('Original Video',frame)
     cv2.imshow('Background Removed',bgrThresh)
 
     k = cv2.waitKey(30) & 0xff
@@ -25,5 +25,3 @@ while(1):
     
 cap.release()
 cv2.destroyAllWindows()
-
-#hello
