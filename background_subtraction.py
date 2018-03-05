@@ -15,7 +15,7 @@ while(1):
     bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_OPEN, kernel)
     bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_CLOSE, kernel)
     bgrThresh = cv2.erode(bgrThresh,kernel,iterations = 3)
-    
+
     #cv2.imshow('fgmask',frame)
     cv2.imshow('Background Removed',bgrThresh)
 
@@ -25,3 +25,5 @@ while(1):
     
 cap.release()
 cv2.destroyAllWindows()
+
+#hello
