@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 
 cap = cv2.VideoCapture('video2.mp4')
-fgbg = cv2.createBackgroundSubtractorMOG2(500,,True)
+fgbg = cv2.createBackgroundSubtractorMOG2(500,64,True)
 kernel = np.ones((3,3),np.uint8)
 
 while(1):
