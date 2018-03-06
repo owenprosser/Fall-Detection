@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 
 cap = cv2.VideoCapture('video2.mp4')
-fgbg = cv2.createBackgroundSubtractorMOG2(500,16,True)
+fgbg = cv2.createBackgroundSubtractorMOG2(1000,64,True)
 kernel = np.ones((3,3),np.uint8)
 
 while(1):
@@ -11,9 +11,9 @@ while(1):
     fgmask = fgbg.apply(frame)
 
     _, bgrThresh = cv2.threshold(fgmask,250,255,cv2.THRESH_BINARY)
-
+    
+    bgrThresh = cv2.erode(bgrThresh,kernel,iterations = 3)
     bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_CLOSE, kernel)
-    grThresh = cv2.erode(bgrThresh,kernel,iterations = 3)
     bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_OPEN, kernel)
 
     #cv2.imshow('Original Video',frame)
