@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 
 cap = cv2.VideoCapture('video2.mp4')
-fgbg = cv2.createBackgroundSubtractorMOG2(1000,64,True)
+fgbg = cv2.createBackgroundSubtractorMOG2(500,,True)
 kernel = np.ones((3,3),np.uint8)
 
 while(1):
@@ -15,6 +15,13 @@ while(1):
     bgrThresh = cv2.erode(bgrThresh,kernel,iterations = 3)
     bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_CLOSE, kernel)
     bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_OPEN, kernel)
+    bgrThresh = cv2.dilate(bgrThresh,kernel,iterations = 4)
+
+    #_,contours,hierarchy = cv2.findContours(bgrThresh, 1, 2)
+    #cnt = contours[0]
+
+    #ellipse = cv2.fitEllipse2(cnt)
+    #cv2.ellipse(bgrThresh,ellipse,(0,255,0),2)
 
     #cv2.imshow('Original Video',frame)
     cv2.imshow('Background Removed',bgrThresh)
