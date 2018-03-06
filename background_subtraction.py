@@ -17,7 +17,7 @@ while(1):
     bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_OPEN, kernel)
     bgrThresh = cv2.dilate(bgrThresh,kernel,iterations = 4)
 
-    #_,contours,hierarchy = cv2.findContours(bgrThresh, 1, 2)
+    _,contours,hierarchy = cv2.findContours(bgrThresh, 1, 2)
     #cnt = contours[0]
 
     #ellipse = cv2.fitEllipse2(cnt)
