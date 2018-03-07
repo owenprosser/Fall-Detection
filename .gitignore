@@ -3,3 +3,4 @@
 *.avi
 *.pyc
 .DS_Store
+/__pychache__
