@@ -45,4 +45,3 @@ fall = fallAction.fallAction()
 det = angleMonitor.angleMonitor()
 
 bgRemove.MOG()
-
