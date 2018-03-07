@@ -1,14 +1,14 @@
 import cv2, numpy as np
 
 class backgroundSub:
-    histroy = 500
+    history = 500
     varThresh = 64
-    detectShadows = False
+    detectShadows = True
     kernel = np.ones((3,3),np.uint8)
 
     def MOG(self):
         cap = cv2.VideoCapture('video2.mp4')
-        fgbg = cv2.createBackgroundSubtractorMOG2(500,64,True)
+        fgbg = cv2.createBackgroundSubtractorMOG2(self.history, self.varThresh ,self.detectShadows)
 
         while(1):
             ret, frame = cap.read()
@@ -34,17 +34,26 @@ class backgroundSub:
             k = cv2.waitKey(30) & 0xff
             if k == 27:
                 break
-        
+
+            det.Detect(bgrThresh)
+
         cap.release()
         cv2.destroyAllWindows()
+
+class fallDetection:
+    window = False
+    def Detect(self, frame):
+        if self.window == False:
+            cv2.imshow('Single Frame',frame)
+            self.window = True
 
 class fallDetected:
     def fallAction(self):
         print("FALL")
 
-
 bgRemove = backgroundSub()
 fall = fallDetected()
+det = fallDetection()
 
 bgRemove.MOG()
 
