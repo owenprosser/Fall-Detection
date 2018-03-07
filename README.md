@@ -4,9 +4,11 @@
 
 Webcam feed is processed to detect falls of human subjects.
 
-To use edit line 11 in fallDetection.py to add your own video to process
+To use:-
+
+*  Edit **line 11** in fallDetection.py to add your own video to process
+* *(Film subject against clear-ish background and from a fair distance for best results)*
 
 ```
-cap = cv2.VideoCapture('yourVideoFileHere.extension')
+11: cap = cv2.VideoCapture('*yourVideoFileHere.extension*')
 ```
-
