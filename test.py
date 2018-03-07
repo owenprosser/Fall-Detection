@@ -1,4 +1,5 @@
 import cv2, numpy as np
+import fallDet
 
 class backgroundSub:
     history = 500
@@ -40,20 +41,13 @@ class backgroundSub:
         cap.release()
         cv2.destroyAllWindows()
 
-class fallDetection:
-    window = False
-    def Detect(self, frame):
-        if self.window == False:
-            cv2.imshow('Single Frame',frame)
-            self.window = True
-
 class fallDetected:
     def fallAction(self):
         print("FALL")
 
 bgRemove = backgroundSub()
 fall = fallDetected()
-det = fallDetection()
+det = fallDet.fallDetection()
 
 bgRemove.MOG()
 
