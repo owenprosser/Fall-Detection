@@ -14,9 +14,10 @@ class angleMonitor:
             area = moments['m00']
             print(area)
 
-            x,y,w,h = cv2.boundingRect(cnt)
-            cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,0),2)
+            [x,y,w,h] = cv2.boundingRect(cnt)
+            cv2.rectangle(frame,(x,y),(x+w,y+h),(255,255,255),10)
 
-            cv2.imshow("Current Frame",frame)
+            cv2.imshow("Current Frame", frame)
+
             #self.init = True
-            time.sleep(1)
+            #time.sleep(1)

@@ -16,7 +16,7 @@ class backgroundSub:
             self.curFrame += 1
             ret, frame = cap.read()
 
-            fgmask = fgbg.apply(frame)
+            fgmask = fgbg.apply(frame,0)
 
             _, bgrThresh = cv2.threshold(fgmask,250,255,cv2.THRESH_BINARY)
             
