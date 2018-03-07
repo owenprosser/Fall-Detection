@@ -13,7 +13,7 @@ class backgroundSub:
         fgbg = cv2.createBackgroundSubtractorMOG2(self.history, self.varThresh ,self.detectShadows)
 
         while(1):
-            self.curFrame +=1
+            self.curFrame += 1
             ret, frame = cap.read()
 
             fgmask = fgbg.apply(frame)
@@ -25,14 +25,15 @@ class backgroundSub:
             bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_OPEN, self.kernel)
             bgrThresh = cv2.dilate(bgrThresh,self.kernel, iterations = 5)
 
-            cv2.imshow('Background Removed',bgrThresh)
+            #cv2.imshow('Background Removed',bgrThresh)
+
+            if (self.curFrame % 5 == 0) & cv2.countNonZero(bgrThresh) > 0:
+                det.Detect(bgrThresh, self.curFrame)
+            fall.check()
 
             k = cv2.waitKey(30) & 0xff
             if k == 27:
                 break
-            if (self.curFrame % 5 == 0) & cv2.countNonZero(bgrThresh) > 0:
-                det.Detect(bgrThresh, self.curFrame)
-            fall.fallAlarm()
 
         cap.release()
         cv2.destroyAllWindows()
