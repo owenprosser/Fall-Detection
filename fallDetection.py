@@ -37,6 +37,7 @@ class backgroundSub:
                 break
 
             det.Detect(bgrThresh)
+            fall.fallAlarm()
 
         cap.release()
         cv2.destroyAllWindows()

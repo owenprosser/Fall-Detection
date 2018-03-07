@@ -1,9 +1,10 @@
 import cv2, numpy as np
 
 class angleMonitor:
-    window = False
+    init = False
     count = 0
     def Detect(self, frame):
-        if self.window == False:
-            cv2.imshow('Single Frame',frame)
-            self.window = True
+        if self.init == False:
+            print("angleMonitor")
+            #cv2.imshow('Single Frame',frame)
+            self.init = True
