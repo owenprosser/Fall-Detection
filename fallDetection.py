@@ -17,7 +17,7 @@ class backgroundSub:
             ret, frame = cap.read()
 
             fgmask = fgbg.apply(frame,0)
-
+            bgrThresh = fgmask
             _, bgrThresh = cv2.threshold(fgmask,250,255,cv2.THRESH_BINARY)
             
             bgrThresh = cv2.erode(bgrThresh,self.kernel, iterations = 3)
