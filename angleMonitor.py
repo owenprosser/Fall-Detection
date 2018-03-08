@@ -11,15 +11,15 @@ class angleMonitor:
         cnt = contours[0]
         moments = cv2.moments(cnt)
         area = moments['m00']
-        print(area)
 
         frame = cv2.cvtColor(frame,cv2.COLOR_GRAY2RGB)
 
         if len(cnt) > 4:
             maxContour = max(contours, key = cv2.contourArea)
+            (x,y),(MA,ma),angle = cv2.fitEllipse(maxContour)
             ellipse = cv2.fitEllipse(maxContour)
             cv2.ellipse(frame,ellipse,(0,255,0),2)
-            cv2.putText(frame,'Area: '+str(area) ,(5,25), self.font, 2,(242, 238, 26),2,cv2.LINE_AA)
+            cv2.putText(frame,'Angle: '+str(angle) ,(5,25), self.font, 2,(242, 238, 26),2,cv2.LINE_AA)
         else:
             print("Less than 5 points in contour array")
             cv2.putText(frame,'Less than 5 points in contour array',(5,25), self.font, 2,(242, 238, 26),2,cv2.LINE_AA)
