@@ -12,7 +12,7 @@ class backgroundSub:
         cap = cv2.VideoCapture('video2.mp4')
         fgbg = cv2.createBackgroundSubtractorMOG2(self.history, self.varThresh ,self.detectShadows)
 
-        while(1):
+        while(cap != None):
             self.curFrame += 1
             ret, frame = cap.read()
 
@@ -20,12 +20,10 @@ class backgroundSub:
             bgrThresh = fgmask
             _, bgrThresh = cv2.threshold(fgmask,250,255,cv2.THRESH_BINARY)
             
-            bgrThresh = cv2.erode(bgrThresh,self.kernel, iterations = 3)
+            bgrThresh = cv2.erode(bgrThresh,self.kernel, iterations = 1)
             bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_CLOSE, self.kernel)
             bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_OPEN, self.kernel)
-            bgrThresh = cv2.dilate(bgrThresh,self.kernel, iterations = 5)
-
-            #cv2.imshow('Background Removed',bgrThresh)
+            bgrThresh = cv2.dilate(bgrThresh,self.kernel, iterations = 1)
 
             if (self.curFrame % 2 == 0) & cv2.countNonZero(bgrThresh) > 0:
                 det.Detect(bgrThresh, self.curFrame)
@@ -37,6 +35,7 @@ class backgroundSub:
 
         cap.release()
         cv2.destroyAllWindows()
+        return 0
 
 
 bgRemove = backgroundSub()
