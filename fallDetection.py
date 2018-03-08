@@ -27,7 +27,7 @@ class backgroundSub:
 
             #cv2.imshow('Background Removed',bgrThresh)
 
-            if (self.curFrame % 5 == 0) & cv2.countNonZero(bgrThresh) > 0:
+            if (self.curFrame % 2 == 0) & cv2.countNonZero(bgrThresh) > 0:
                 det.Detect(bgrThresh, self.curFrame)
             fall.check()
 
