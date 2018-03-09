@@ -17,18 +17,22 @@ class angleMonitor:
         righty = int(((cols-x)*vy/vx)+y)
 
         frame = cv2.cvtColor(frame,cv2.COLOR_GRAY2RGB)
+        screenText = ""
 
         if len(maxContour) > 4:
             (x,y),(MA,ma),angle = cv2.fitEllipse(maxContour)
             maxArea = cv2.contourArea(maxContour)
-            ellipse = cv2.fitEllipse(maxContour)
-            cv2.ellipse(frame,ellipse,(0,255,0),2)
-            cv2.line(frame,(cols-1,righty),(0,lefty),(0,0,255),2)
-            screenText = 'Angle: '+str(angle)+' maxArea: '+str(maxArea)
-            cv2.putText(frame,screenText ,(5,25), self.font, 2,(242, 238, 26),2,cv2.LINE_AA)
+            if maxArea > 3000:
+                ellipse = cv2.fitEllipse(maxContour)
+                cv2.ellipse(frame,ellipse,(0,255,0),2)
+                cv2.line(frame,(cols-1,righty),(0,lefty),(0,0,255),2)
+                screenText = 'Angle: '+str(angle)+' maxArea: '+str(maxArea)
+            else:
+                screenText = "Contour area too small: "+str(maxArea)
         else:
             print("Less than 5 points in contour array")
-            cv2.putText(frame,'Less than 5 points in contour array',(5,25), self.font, 2,(242, 238, 26),2,cv2.LINE_AA)
+            screenText = "Less than 5 points in contour array"
 
+        cv2.putText(frame,screenText ,(5,25), self.font, 2,(242, 238, 26),2,cv2.LINE_AA)
         cv2.imshow("Current Frame", frame)
         time.sleep(0.2)
