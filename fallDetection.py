@@ -25,7 +25,7 @@ class backgroundSub:
             bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_OPEN, self.kernel)
             bgrThresh = cv2.dilate(bgrThresh,self.kernel, iterations = 1)
 
-            if (self.curFrame % 2 == 0) & cv2.countNonZero(bgrThresh) > 0:
+            if (self.curFrame % 1 == 0) & cv2.countNonZero(bgrThresh) > 0:
                 det.Detect(bgrThresh, self.curFrame)
             fall.check()
 
