@@ -35,4 +35,4 @@ class angleMonitor:
 
         cv2.putText(frame,screenText ,(5,25), self.font, 2,(242, 238, 26),2,cv2.LINE_AA)
         cv2.imshow("Current Frame", frame)
-        time.sleep(0.2)
+        #time.sleep(0)
