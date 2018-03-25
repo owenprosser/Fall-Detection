@@ -20,7 +20,7 @@ class backgroundSub:
                 bgrThresh = fgmask
                 _, bgrThresh = cv2.threshold(fgmask,250,255,cv2.THRESH_BINARY)
                 
-                bgrThresh = cv2.erode(bgrThresh,self.kernel, iterations = 2)
+                bgrThresh = cv2.erode(bgrThresh,self.kernel, iterations = 1)
                 bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_CLOSE, self.kernel)
                 bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_OPEN, self.kernel)
                 bgrThresh = cv2.dilate(bgrThresh,self.kernel, iterations = 1)
@@ -37,7 +37,6 @@ class backgroundSub:
         cap.release()
         cv2.destroyAllWindows()
         return 0
-
 
 bgRemove = backgroundSub()
 fall = fallAction.fallAction()
