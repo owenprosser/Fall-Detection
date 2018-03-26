@@ -1,7 +1,7 @@
 #!/usr/local/bin/python3
 
 #			Owen Prosser
-#		14514822@students.licoln.ac.uk
+#	14514822@students.licoln.ac.uk
 
 import cv2
 import argparse
