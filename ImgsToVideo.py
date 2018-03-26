@@ -9,7 +9,7 @@ import os
 import functools
 from functools import cmp_to_key
 
-#Function to check if string can be cast to int
+#Function to check if string can be cast to int 
 def isnum (num):
 	try:
 		int(num)
