@@ -1,4 +1,4 @@
-\documentclass[12pt]{report}
+\documentclass[12pt,a4paper]{report}
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -8,16 +8,19 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{float}
+\usepackage{afterpage}
 %Fancy Header
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyfoot{}
-\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.0pt}
+\renewcommand{\headrulewidth}{0.0pt}
 \lhead{CMP3060M - Project
 Assignment 2 - Project Report}
 \rhead{}
-\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[R]{\thepage}
 \fancyfoot[L]{PRO14514822 - Owen Prosser}
+\fancypagestyle{plain}{\pagestyle{fancy}}
 %-------------
 \graphicspath{ {images/} }
 
@@ -33,9 +36,13 @@ Assignment 2 - Project Report}
 \begin{document}
 %Insert the title
 \maketitle
- 
-\clearpage
+
+\begin{abstract}
+\emph{Need to write an abstract. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}
+\end{abstract}
+
 \tableofcontents
+
 \chapter{Introduction}
 According to the World Health Organisation a fall is the second leading cause of "unintentional injury deaths" worldwide, making this an issue of the highest severity \citep{Cruz_Fall_detection_wearable_device}. The population is aging in most western countries. In the US, in the 28 years from 1980 from 2008, the share of the population over 60 has nearly doubled from 9.9 million to 18.6 million \citep{Siracuse_Health_care_and_socioeconomic}\% of both independent and institutionalised persons over the age of 75 are estimated to experience a traumatic fall in a year \citep{Sixsmith_A_smart_sensor_to_detect}, putting the elderly at a significantly higher risk of "injury to the head, neck, and pelvis than younger individuals"  These falls a huge issue for the elderly population as it is estimated that 90\% of geriatric injuries are caused by falls\citep{boltz_Injuries_and_outcomes}. This puts a huge strain on hospitals as well as families who care for elderly relatives. A system for detecting these falls should they occur could assist carers for the elderly as they would not have to be with the cared at all times. This would both reduce the workload for the carer and give back some privacy and independence. It has also been shown that "longer the lie on the floor, the poorer is the outcome of the medical intervention"\citep{Li_A_microphone_array}. A detection system which could alert a care giver quickly could reduce the delay between the fall and provision of medical assistance increasing the chances of a good recovery and lowering distress for the patient.
 
@@ -89,6 +96,7 @@ Many elements of the discussed research is relevant and will have an effect on t
 
 %References
 \renewcommand\bibname{References}
+\addcontentsline{toc}{chapter}{References}
 \bibliography{references.bib}
 
 \end{document}
