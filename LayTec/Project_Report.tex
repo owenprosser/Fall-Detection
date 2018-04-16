@@ -1,0 +1,83 @@
+\documentclass[12pt]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\graphicspath{ {images/} }
+
+%Harvard Referencing
+\bibliographystyle{agsm}
+
+%Setup the title
+\title{
+	{AN INVESTIGATION INTO THE DEVELOPMENT AND EFFECTIVNESS OF COMPUTER-VISON FALL DETECTION SYSTEMS AT THE UNIVERSITY OF LINCOLN}\\
+    {\large University Of Lincoln}
+}
+\author{PRO14514822 - Owen Prosser}
+\begin{document}
+%Insert the title
+\maketitle
+ 
+ \tableofcontents
+ 
+\chapter{Introduction}
+According to the World Health Organisation a fall is the second leading cause of "unintentional injury deaths" worldwide, making this an issue of the highest severity \citep{Cruz_Fall_detection_wearable_device}. The population is aging in most western countries. In the US, in the 28 years from 1980 from 2008, the share of the population over 60 has nearly doubled from 9.9 million to 18.6 million \citep{Siracuse_Health_care_and_socioeconomic}\% of both independent and institutionalised persons over the age of 75 are estimated to experience a traumatic fall in a year \citep{Sixsmith_A_smart_sensor_to_detect}, putting the elderly at a significantly higher risk of "injury to the head, neck, and pelvis than younger individuals"  These falls a huge issue for the elderly population as it is estimated that 90\% of geriatric injuries are caused by falls\citep{boltz_Injuries_and_outcomes}. This puts a huge strain on hospitals as well as families who care for elderly relatives. A system for detecting these falls should they occur could assist carers for the elderly as they would not have to be with the cared at all times. This would both reduce the workload for the carer and give back some privacy and independence. It has also been shown that "longer the lie on the floor, the poorer is the outcome of the medical intervention"\citep{Li_A_microphone_array}. A detection system which could alert a care giver quickly could reduce the delay between the fall and provision of medical assistance increasing the chances of a good recovery and lowering distress for the patient.
+
+\chapter{literature Review}
+\section{Background}
+According to the World Health Organisation a fall is the second leading cause of "unintentional injury deaths" worldwide, making this an issue of the highest severity \citep{Cruz_Fall_detection_wearable_device}. The population is aging in most western countries. In the US, in the 28 years from 1980 from 2008, the share of the population over 60 has nearly doubled from 9.9 million to 18.6 million \citep{Siracuse_Health_care_and_socioeconomic}\% of both independent and institutionalised persons over the age of 75 are estimated to experience a traumatic fall in a year \citep{Sixsmith_A_smart_sensor_to_detect}, putting the elderly at a significantly higher risk of "injury to the head, neck, and pelvis than younger individuals"  These falls a huge issue for the elderly population as it is estimated that 90\% of geriatric injuries are caused by falls\citep{boltz_Injuries_and_outcomes}. This puts a huge strain on hospitals as well as families who care for elderly relatives. A system for detecting these falls should they occur could assist carers for the elderly as they would not have to be with the cared at all times. This would both reduce the workload for the carer and give back some privacy and independence. It has also been shown that "longer the lie on the floor, the poorer is the outcome of the medical intervention"\citep{Li_A_microphone_array}. A detection system which could alert a care giver quickly could reduce the delay between the fall and provision of medical assistance increasing the chances of a good recovery and lowering distress for the patient.
+
+\section{Available Systems}
+There are many currently available alarm systems for detecting human falls. These are generally split into two categories; user-activated systems where the user manually actives an alarm after a fall, and automatic systems where the alarm is triggered without user interaction once a fall is detected \citep{Alwan_A_smart_and_passive_floor-vibration}. 
+
+\section{Wearable Systems}
+A large portion of these automatic systems require the user to wear some equipment or carry a device with them at all times. One of these systems uses the accelerometer built into most modern smart phones to detect falls \citep{Tsinganos_A_smartphone-based_fall}. This works by sensing a sudden change in acceleration of the device. This system is fairly accurate with a precision of 91.8\% but has a few fundamental drawbacks. Firstly, the system's accuracy is affected by how the user is carrying the phone their body and of course it has a 0\% accuracy when the phone is not being carried or is not running the app. Many systems attack specialised hardware to the body of the user to measure their acceleration to detect falls. One of these systems uses a 'pendant' worn around the user's neck \citep{Santiago_Fall_detection_system}. The detection systems work in a similar way to the previous smartphone-app-bases system, this time with the pendant having dedicated hardware to measure changes in acceleration rather than using the multipurpose sensors built into a smartphone. This pendant then communicates with a smartphone app to trigger an alert if a fall is detected. This system has a very similar accuracy rate of 92\% but has the advantage that this should be very consistent as the detector will always be placed in the same area of the user's body compared to a smartphone. Another system uses a unit of sensors attached to the belt of the user \citep{Cruz_Fall_detection_wearable_device}. Whilst the accuracy of the system is not present in this paper it could be assumed that it would be similar to that of the previous system as they both feature a similar hardware implementation and methodology for establishing the acceleration threshold for determining a fall. Without evidence of a significant improvement in the quality of detection this system appears less practical than the previous system as the belted sensor array is bulkier and probably less comfortable to wear. These systems, however, still requires that the user wear a specialised piece of hardware at all times for the system to be functioning although this is better than having to carry a smartphone at all times. One severe limitation of all of the smartphone-based systems is that they require the user to already own a smartphone. This is a limiting factor because whilst smartphone adoption is on the rise among the over 55 age group only 30\% of this category currently own a smartphone \citep{Berenguer_Are_Smartphones_Ubiquitous}. The potential user base for a fall detection system could be greatly expanded if the system was functional on its own without being reliant on the user's smartphone connection to the internet to trigger and alarm in the event of a fall. As many elderly people "are having difficulties in using modern smart devices" \citep{William_Cognitive_modeling_in_human_computer_interaction} a system which does not require the direct interaction of the user to function could be more effective at detecting falls as it can be passively running in the background in no way reliant on input from the user or their aptitude for technology.
+
+\section{Passive Systems}
+Passive systems use a variety of sensing methods to the detect falls, including cameras, Infra-Red (IR) thermal-imaging cameras or ultra-sonic sensors. One of the most effective of these systems uses ultrasonic sensors to detect the area of the floor of a room which is covered by the user. When walking around the house normally the user's feet will only cover a small section of the floor space, in the event of a fall the user's body will cover a larger area of the floor, the system will detect this as a fall \citep{Chang_Human_fall_detection_based_on_event}. This system is very accurate with "up to 98\% precision" but does require a large amount of hardware to be installed around the perimeter of each room where fall detection is required. Another passive system uses a ceiling-mounted IR camera to gather a top down heat map of the room. \citep{Hayashida_The_use_of_thermal_ir_array}. When the user is moving around the monitored space normally the camera will perceive a small area being at a higher temperature than the rest of the room. If the user is to fall over in view of the thermal-camera their thermal signature will appear larger to camera allowing it to detect a fall. This system is effective at its goal of detecting falls with a "robust fall recognition rate (over 94\%)" but requite specialised thermal imaging hardware. This hardware, at its current cost, would be prohibitively expensive not only to this project but also to the system's end user. One other passive system utilises a circular array of 8 omnidirectional microphones to detect a fall based on the noise of contact with the floor \citep{Li_A_microphone_array}. The main drawback of this type of system is that its accuracy is somewhat dependant on the acoustic conditions of the room. Any background noise from traffic or a television can mask the sound of a fall potentially allowing for it to be missed. This is not shared by systems which rely of camera (including thermal imaging cameras) as these are not affected by interference.
+
+\section{Conclusions}
+Of the systems discussed in this review 
+
+\chapter{Methodology}
+
+\section{Project Management}
+
+\section{Software Development}
+
+\section{Tool-sets and Machine Environments}
+
+\section{Research Methods}
+
+\chapter{Design, Development and Evaluation}
+
+\section{Requirements}
+
+\subsection{Requirements Elicitation}
+
+\subsection{Requirements Collection}
+
+\subsection{Requirements Analysis}
+
+\section{Design}
+
+\section{Development}
+
+\section{Testing}
+
+\section{Operations and Maintenance}
+
+\chapter{Project Conclusion}
+
+\chapter{Reflective Analysis}
+\citep{li2012microphone}
+\renewcommand\bibname{References}
+\bibliography{references.bib}
+
+\end{document}
+

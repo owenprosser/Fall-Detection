@@ -22,7 +22,8 @@ class angleMonitor:
         if len(maxContour) > 4:
             (x,y),(MA,ma),angle = cv2.fitEllipse(maxContour)
             maxArea = cv2.contourArea(maxContour)
-            if maxArea > 10000:
+            print(maxArea)
+            if maxArea > 100:
                 ellipse = cv2.fitEllipse(maxContour)
                 cv2.ellipse(frame,ellipse,(0,255,0),2)
                 cv2.line(frame,(cols-1,righty),(0,lefty),(0,0,255),2)
