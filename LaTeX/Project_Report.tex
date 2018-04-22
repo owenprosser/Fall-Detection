@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{report}
+\documentclass[11pt,a4paper]{report}
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -9,7 +9,7 @@
 \usepackage{caption}
 \usepackage{float}
 \usepackage{afterpage}
-%Fancy Header
+%Fancy Header-----
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyfoot{}
@@ -22,7 +22,15 @@ Assignment 2 - Project Report}
 \fancyfoot[L]{PRO14514822 - Owen Prosser}
 \fancypagestyle{plain}{\pagestyle{fancy}}
 %-------------
+%Fancy Header-----
+\usepackage{afterpage}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
 \graphicspath{ {images/} }
+%-------------
 
 %Harvard Referencing
 \bibliographystyle{agsm}
@@ -41,10 +49,16 @@ Assignment 2 - Project Report}
 \emph{Need to write an abstract...}
 \end{abstract}
 
+%\afterpage{\blankpage}
+
 \tableofcontents
+
+%\afterpage{\blankpage}
 
 \chapter{Introduction}
 The overall aim of this project is to create a fall detection system using the Python programming langauge and its OpenCV library.
+
+According to the World Health Organisation a fall is the second leading cause of "unintentional injury deaths" worldwide, making this an issue of the highest severity \citep{Cruz_Fall_detection_wearable_device}. The population is aging in most western countries. In the US, in the 28 years from 1980 from 2008, the share of the population over 60 has nearly doubled from 9.9 million to 18.6 million \citep{Siracuse_Health_care_and_socioeconomic}\% of both independent and institutionalised persons over the age of 75 are estimated to experience a traumatic fall in a year \citep{Sixsmith_A_smart_sensor_to_detect}, putting the elderly at a significantly higher risk of "injury to the head, neck, and pelvis than younger individuals"  These falls a huge issue for the elderly population as it is estimated that 90\% of geriatric injuries are caused by falls\citep{boltz_Injuries_and_outcomes}. This puts a huge strain on hospitals as well as families who care for elderly relatives. A system for detecting these falls should they occur could assist carers for the elderly as they would not have to be with the cared at all times. This would both reduce the workload for the carer and give back some privacy and independence. It has also been shown that "longer the lie on the floor, the poorer is the outcome of the medical intervention"\citep{Li_A_microphone_array}. A detection system which could alert a care giver quickly could reduce the delay between the fall and provision of medical assistance increasing the chances of a good recovery and lowering distress for the patient.
 
 \chapter{Literature Review}
 \section{Background}
@@ -76,7 +90,7 @@ An iterative Agile methodology is advantageous over an non-agile methodology lik
 \section{Software Development}
 When creating any piece of software in any confined timescale it is important that there is some system for creating the software in an efficient manner. In order to do this effectively it has be managed within the limitations of the project at hand. This project has many factors which impact the available software engineering methodologies could be effectively employed to increase the speed of development and improve the quality of the artefact in relation to its original aim and objectives. The main factors which affected how this development of the project was carried out were that, firstly, this was a project for one individual to complete, it had a very strict deadline for completion which could not be extended, there were many other unrelated tasks which need to be completed in parallel, and also there were many unfamiliar components to be used for the development of the system which needed specific time set aside to be researched and learned how to be used. This project did however have one quality to the benefit of various Software Engineering Methodologies; the project had very well defined requirements from the beginning which can be vital during the planning stages which are an important part of many methodologies.
 
-The oldest and still one of the most commonly used development methodologies is the Waterfall method \citep{shaydulin2017agile}.  
+The oldest and still one of the most commonly used development methodologies is the Waterfall method \citep{shaydulin2017agile}. This methodology was not used for a number of reasons. Firstly, as the time to complete this project was limited the Waterfall methodology could have contributed incorrectly allocating time to certain areas of the project where it was not as needed as in others. This would have been due to the strictly linear structured nature of the methodology dictating that some parts of the project (such as requirement gathering and analysis) had to be completed before other stages could begin \citep{shaydulin2017agile}. This rigidity in the process of the methodology would not allow for the software to be tested during the development as this would have to added as an additional stage at the end of the cycle \citep{WaterfallPresentation}. This would have been to the detriment of the development of the artefact because it relied on testing throughout the development to ensure that it was working correctly.
 
 One common methodology that could be applied to the project is Extreme-Programming (XP) \citep{shaydulin2017agile} 
 
