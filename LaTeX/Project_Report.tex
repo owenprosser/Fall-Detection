@@ -58,7 +58,7 @@ Assessment Item 2 - Project Report}
 %\afterpage{\blankpage}
 
 \chapter{Introduction}
-The overall aim of this project is to create a fall detection system using the Python programming language and its OpenCV library.
+The overall aim of this project is to create a Fall Detection System using the Python programming language and its OpenCV library. This system is intended for to assist families, or care-providing professionals, who are responsible for the well-being of the elderly but cannot for whatever reason monitor them at all times. It is designed to alert any kind of care-giver in the event that an elderly person has had a fall and potentially hurt themselves and may require medical attention, or just some reassurance and compassion.  
 
 
 \chapter{Literature Review} %------------------------------------------------
@@ -84,9 +84,9 @@ This project was developed using an agile methodology. The development of the ar
 
 An iterative methodology also focuses on breaking down the entire project into small parts, each of these parts in then set to be completed during one of the many sprints. At the beginning of the development process the requirements of the project are analysed to find how they can be best be divided into their component parts for each of the sprints. The most important factor during this part of the process is to have a well-defined set of requirements. This allows for the project to be accurately broken down without having to repeat this process again when the requirements become more clearly defined. This was useful during this project as the require were very well-defined at the beginning of the project and have not changed during the development. The progress of the project is made easier to track when it is divided into many parts in this way. Throughout the entire project it is known how many parts are left to complete and what is required to complete each of them. The progress can also be precisely known because the project is being undertaken by an individual rather than a team. This means that it is not required to understand how other members of the team are working what progress they are making.
 
-Another of the main purposes of scrum methodology is to allow the individual to be more adaptable if and when an obstacle to development does arise\citep{Wiley_Project_Management}. After a break in productivity due to a change in the requirements or other unforeseen circumstance an iterative project management methodology can adapt. This is due to the structure of having many regular meetings each with its own set of goals. These meetings allow for the team to realign the upcoming tasks based on the best way to navigate this landscape of new requirements. One example of this was used during the completion of this artefact is that there were many other unrelated tasks which needed to be completed in parallel with this project. This caused some delays throughout the development as these other tasks could often have their own delays and unforeseen changes. This kind of individual sprint is only possible with a small scale development such as this, usually an individual would not be able to focus themselves in one particular area for an extended period of time without it being detrimental to their other responsibilities if they were trying to run a small one-person business for example. However, this approach can have some drawbacks in terms of a project such as this. As this is a small project undertaken by an individual without much oversight, there is the possibility of getting lost and not making sufficient progress towards the overall goal caused by constantly changing direction with each sprint.
+Another of the main purposes of using an iterative methodology is to allow the individual to be more adaptable if, and when, an obstacle to development does arise \citep{Wiley_Project_Management}. After a break in productivity due to a change in the system's requirements or other unforeseen circumstance, an iterative project management methodology can adapt to this change. This is due to the structure of having many regular meetings, each with its own set of goals. These meetings allow for a team or individual developer to realign and reorder the upcoming tasks based on the best way to navigate this landscape of new requirements. One example of this used during the completion of this artefact; there were many other unrelated tasks which needed to be completed in parallel with this project. This caused some delays throughout the development as these other tasks could often have their own delays and unforeseen changes. This kind of individual sprint is only possible with a small scale development such as this, usually an individual would not be able to focus themselves in one particular area for an extended period of time without it being detrimental to their other responsibilities if they were trying to run a small one-person business for example. However, this approach can have some drawbacks in terms of a project such as this. As this is a small project undertaken by an individual without much oversight, there is the possibility of getting lost and not making sufficient progress towards the overall goal caused by constantly changing direction with each sprint.
 
-An iterative Agile methodology is advantageous over an non-agile methodology like Waterfall. When using Waterfall for example, each stage of development has to be completed before the next can begin. This can cause large delays when one part of the project is experiencing delays. This would be particularly problematic for a project such as this as delays can be common for all parts of the development for many reasons. Firstly, many other unrelated tasks were also required their own dedicated time to complete during the development of the artefact. This would have caused long delays under a Waterfall development method as it would have prevented development on any other part of the artefact until these other tasks had been fully completed. Also as some time was required to be spent researching and learning how to use some of the vital components of this project, this would have caused other parts of the development to completely stall under the older, non-agile Waterfall methodology. 
+An iterative Agile methodology is advantageous over an non-agile methodology like Waterfall. When using Waterfall, for example, each stage of development has to be completed before the next can begin. This can cause large delays when one part of the project is experiencing delays. This would be particularly problematic for a project such as this as delays can be common for all parts of the development for many reasons. Firstly, many other unrelated tasks were also required their own dedicated time to complete during the development of the artefact. This would have caused long delays under a Waterfall development method as it would have prevented development on any other part of the artefact until these other tasks had been fully completed. Also as some time was required to be spent researching and learning how to use some of the vital components of this project, this would have caused other parts of the development to completely stall under the older, non-agile Waterfall methodology. 
 
 \pagebreak
 
@@ -128,16 +128,40 @@ At the beginning of the project Gantt Charts were used to plan how the available
 
 \section{Requirements Elicitation and Analysis}
 
+The requirements for the system were initially gathered at the beginning of the development of the project from the client. The initial overall aim for the project was as follows: "The main aim for this project is to have developed a system which can detect a human in a video using a web-cam attached to the computer, the system will be able to establish if the subject is standing or has fallen. Then, if the system detects a fall, some form of alert should be triggered".
+
+This general aim was then abstracted into smaller, more manageable, objectives to assist in making them more conceivable and accomplishable. These objectives were:
+
+\begin{enumerate}
+	\item Input the video feed from the web cam into the software so that it can be processed. The video feed should also be displayed so that the quality of the video as well as the angle of the camera can be checked.
+    \item Remove the background from the video (using techniques found in the literature review) so that the silhouette of the user is left for the next stage of the program to process.
+    \item Use the resultant video from the background removal to detect the position of the user’s silhouette in the video feed.
+    \item Using the position of the silhouette an oval should be placed around it in the video.
+    \item To determine the angle at which the subject is standing using the calculated oval (this is also using
+techniques found in the literature review).
+	\item Build a system for alerting a family member, carer, or friend in the event of a fall being detected by the
+system.
+	\item Test the system thoroughly to ensure that it can detect a fall whilst minimizing false positives.
+\end{enumerate}
+
+The overall aim was abstracted into the objectives using research of the design of other similar systems and knowledge of how this aim could be feasibly programmed using Python. The objectives where then separated into two logical groups; Functional and Non-Functional requirements. Some more detailed requirements were also added at this stage. The functional requirements should be able to be identified by the end-user as features of the Fall-Detection System. The Non-Functional requirements are still vital to the correct and efficient operation of the system but are less obvious and should not be noticeable without knowledge of the inner workings of the system.   
+
 \begin{enumerate}
    \item Functional Requirements
    \begin{itemize}
-     \item text
-     \item text
+   	\item Build a system for alerting a family member, carer, or friend in the event of a fall being detected by the
+system.
    \end{itemize}
    \item Non-Functional Requirements
     \begin{itemize}
-     \item text
-     \item text
+     \item Input the video feed from the web cam into the software so that it can be processed. The video feed should also be displayed so that the quality of the video as well as the angle of the camera can be checked.
+    \item Remove the background from the video (using techniques found in the literature review) so that the silhouette of the user is left for the next stage of the program to process.
+    \item Use the resultant video from the background removal to detect the position of the user’s silhouette in the video feed.
+    \item Using the position of the silhouette an oval should be placed around it in the video.
+    \item To determine the angle at which the subject is standing using the calculated oval (this is also using
+techniques found in the literature review).
+	\item Test the system thoroughly to ensure that it can detect a fall whilst minimizing false positives.
+    \item The system must process the video in real-time so that there is not a growing back-log of video frames which could cause the system to fill it's available memory.
     \end{itemize}
 \end{enumerate}
 
