@@ -5,7 +5,7 @@
 \usepackage{natbib}
 \usepackage{url}
 \usepackage{listings}
-\usepackage{graphicx}
+\usepackage{graphicx, wrapfig}
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage{float}
 \usepackage{afterpage}
@@ -82,8 +82,6 @@ Many elements of the discussed research is relevant and will have an effect on t
 \section{Project Management}%---------------------------------------------------------------------
 This project was developed using an agile methodology. The development of the artefact was divided into many one week long sprints each beginning/concluding with a meeting with the project supervisor. Each of these meetings began with a brief discussion of the progress made during the previous week. This part of the meeting was then followed by a discussion of the tasks to be undertaken before the next meeting. This follows the structure of an iterative methodology.
 
-The overall timespan of the project was managed using a Gantt Chart which was planned at the beginning of the project.
-
 An iterative methodology also focuses on breaking down the entire project into small parts, each of these parts in then set to be completed during one of the many sprints. At the beginning of the development process the requirements of the project are analysed to find how they can be best be divided into their component parts for each of the sprints. The most important factor during this part of the process is to have a well-defined set of requirements. This allows for the project to be accurately broken down without having to repeat this process again when the requirements become more clearly defined. This was useful during this project as the require were very well-defined at the beginning of the project and have not changed during the development. The progress of the project is made easier to track when it is divided into many parts in this way. Throughout the entire project it is known how many parts are left to complete and what is required to complete each of them. The progress can also be precisely known because the project is being undertaken by an individual rather than a team. This means that it is not required to understand how other members of the team are working what progress they are making.
 
 Another of the main purposes of scrum methodology is to allow the individual to be more adaptable if and when an obstacle to development does arise\citep{Wiley_Project_Management}. After a break in productivity due to a change in the requirements or other unforeseen circumstance an iterative project management methodology can adapt. This is due to the structure of having many regular meetings each with its own set of goals. These meetings allow for the team to realign the upcoming tasks based on the best way to navigate this landscape of new requirements. One example of this was used during the completion of this artefact is that there were many other unrelated tasks which needed to be completed in parallel with this project. This caused some delays throughout the development as these other tasks could often have their own delays and unforeseen changes. This kind of individual sprint is only possible with a small scale development such as this, usually an individual would not be able to focus themselves in one particular area for an extended period of time without it being detrimental to their other responsibilities if they were trying to run a small one-person business for example. However, this approach can have some drawbacks in terms of a project such as this. As this is a small project undertaken by an individual without much oversight, there is the possibility of getting lost and not making sufficient progress towards the overall goal caused by constantly changing direction with each sprint.
@@ -101,18 +99,24 @@ One common methodology that could be applied to the project is Extreme-Programmi
 
 \begin{figure}[H]
  \centering
- \includegraphics[scale=0.5]{images/XP_vs_Waterfall.png}
- \caption{Table showing development time comparison in both Waterfall and XP \citep{XPsharma2016analysis}.}
+ \includegraphics[scale = 0.45]{XP_vs_Waterfall.png}
+ \caption{Table showing development time comparison in both Waterfall and XP  \citep{XPsharma2016analysis}.}
  \label{fig:XPvsWater}
 \end{figure}
 
 As the development of the project was undertaken by an individual with a limited amount of available time as other tasks also required their own time and attention through the development process of this project the Kanban methodology was useful. One of the main features of the Kanban methodology is limiting the current workload on the team, or in this case the individual \citep{Kanban_lei2017statistical}. In this methodology only two parts of the project can be in active development at once. To start development one another part one of the in-progress tasks has to be completed. This helped to limit the current scope of the development to save time and prevent a lack of focus when balancing with other unrelated tasks.
 
-This project had many limiting factors which dictated which parts of the development could be optimised with Software Engineering Methodologies it was important that the appropriate development system was used to deliver a working artefact on time. To do this it was not possible to use all aspects of one methodology to develop the artefact, parts had to be taken from multiple methodologies. For example the focus on smaller segments of the project from Kanban and the fast-paced test-focused style from Extreme Programming.
+This project had many limiting factors which dictated which parts of the development could be optimised with Software Engineering Methodologies it was important that the appropriate development system was used to deliver a working artefact on time. To do this it was not possible to use all aspects of one methodology to develop the artefact, parts had to be taken from multiple methodologies. For example the focus on smaller segments of the project by limiting the amount of items of work in progress from Kanban and the fast-paced test-focused style from Extreme Programming.
 
 \section{Tool-Sets and Machine Environments}
 
+The tools used in a project are very important to the finished artefact. This section will document the tools used as well as how and why they were chosen for their respective roles in the project.
 
+Arguably the most important tool used for the creation of the project is the programming language itself. In the case of this project, the language used was Python \citep{Python}. This language was used for many reasons. Firstly, it is compatible with many languages which are useful to the project. This includes the OpenCV library which is vital to the project \citep{OpenCV}. Python was also used because it is able to be run on many different platforms including Mac OS, Windows and Linux systems. This is important to this artifact because the final implementation is intended to be run on a small system such as a Raspberry Pi so that it can be placed in a room and run permanently. It also  
+
+The OpenCV library is used in some way for all components of the artefact which deal with video or image files. This library was chosen as it is the industry standard for computer vision libraries "companies like Google, Yahoo, Microsoft, Intel..." \citep{OpenCV}. 
+
+The overall timespan of the project was managed using a Gantt Chart which was planned at the beginning of the project. 
 
 \chapter{Design, Development and Evaluation}
 
