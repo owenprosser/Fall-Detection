@@ -58,7 +58,7 @@ Assignment 2 - Project Report}
 %\afterpage{\blankpage}
 
 \chapter{Introduction}
-The overall aim of this project is to create a fall detection system using the Python programming langauge and its OpenCV library.
+The overall aim of this project is to create a fall detection system using the Python programming language and its OpenCV library.
 
 
 \chapter{Literature Review} %------------------------------------------------
@@ -95,12 +95,12 @@ When creating any piece of software in any confined timescale it is important th
 
 The oldest and still one of the most commonly used development methodologies is the Waterfall method \citep{shaydulin2017agile}. This methodology was not used for a number of reasons. Firstly, as the time to complete this project was limited the Waterfall methodology could have contributed incorrectly allocating time to certain areas of the project where it was not as needed as in others. This would have been due to the strictly linear structured nature of the methodology dictating that some parts of the project (such as requirement gathering and analysis) had to be completed before other stages could begin \citep{shaydulin2017agile}. This would have been an issue for this project as it carried out by an individual with other concerns during the development. Without being able to switch between different tasks and areas of the project as the available time permitted within a busy schedule the development could have stagnated. The Waterfall methodology has a rigid structure which does not allow the developer(s) to repeat a stage without completing all subsequent stages until the end of the cycle \citep{WaterfallPresentation} this would not allow for the software to be tested during the development as this would have to added as an additional stage at the end of the Waterfall cycle. This would have been detrimental to the development of the artefact because it relied on testing throughout the development to ensure that it was functioning correctly and any new features that had been added since the last set of tests had not introduced any new bugs.
 
-One common methodology that could be applied to the project is Extreme-Programming (XP). Elements of this methodology were used during the development of the artefact. This was because "XP keeps short development cycles with incremental design and planning" \citep{XPsharma2016analysis} allowing the artefact to developed in small sections which could be individually designed and tested. XP "follows a ... testing strategy and restricts the propagation of the risk in the later stages" \citep{XPsharma2016analysis}. This allowed the addition of features to carry little risk of delay. If this had been done using a Waterfall methodology the software would have to be mostly completed before any tests could be carried out, increasing the time needed to resolve any issues that may be found as there would have been a larger code base to work on. This is described by \cite{XPsharma2016analysis} as the Waterfall or other non-agile methodology "tend to develop a faulty system". In addition to this XP has the flexibility to "accommodate the implementation of functionality" \citep{XPsharma2016analysis} which was useful as the artefact was developed in stages adding one feature at a time which was then tested. The increase in development speed is shown in fig \ref{fig:XPvsWater}. However not all aspects of XP were used, as there are multiple which did not apply to the specific aspects of this project. For example "XP is a software methodology that focuses on the pair programming" and "encourages a high degree of interactions between team members" \citep{XPsharma2016analysis} which of course could not be used as this was a project entirely completed by one individual. Also Extreme Programming "adapts [to] the changes in the project"
+One common methodology that could be applied to the project is Extreme-Programming (XP). Elements of this methodology were used during the development of the artefact. This was because "XP keeps short development cycles with incremental design and planning" \citep{XPsharma2016analysis} allowing the artefact to developed in small sections which could be individually designed and tested. XP "follows a ... testing strategy and restricts the propagation of the risk in the later stages" \citep{XPsharma2016analysis}. This allowed the addition of features to carry little risk of delay. If this had been done using a Waterfall methodology the software would have to be mostly completed before any tests could be carried out, increasing the time needed to resolve any issues that may be found as there would have been a larger code base to work on. This is described by \cite{XPsharma2016analysis} as the Waterfall or other non-agile methodology "tend to develop a faulty system". In addition to this XP has the flexibility to "accommodate the implementation of functionality" \citep{XPsharma2016analysis} which was useful as the artefact was developed in stages adding one feature at a time which was then tested. The increase in development speed is shown in figure \ref{fig:XPvsWater}. However not all aspects of XP were used, as there are multiple which did not apply to the specific aspects of this project. For example "XP is a software methodology that focuses on the pair programming" and "encourages a high degree of interactions between team members" \citep{XPsharma2016analysis} which of course could not be used as this was a project entirely completed by one individual. Also Extreme Programming "adapts [to] the changes in the project"
 
 \begin{figure}[H]
  \centering
  \includegraphics[scale = 0.45]{XP_vs_Waterfall.png}
- \caption{Table showing development time comparison in both Waterfall and XP  \citep{XPsharma2016analysis}.}
+ \caption{Table showing a comparison in development time for both Waterfall and XP 		methodologies \citep{XPsharma2016analysis}.}
  \label{fig:XPvsWater}
 \end{figure}
 
@@ -112,11 +112,15 @@ This project had many limiting factors which dictated which parts of the develop
 
 The tools used in a project are very important to the finished artefact. This section will document the tools used as well as how and why they were chosen for their respective roles in the project.
 
-Arguably the most important tool used for the creation of the project is the programming language itself. In the case of this project, the language used was Python \citep{Python}. This language was used for many reasons. Firstly, it is compatible with many languages which are useful to the project. This includes the OpenCV library which is vital to the project \citep{OpenCV}. Python was also used because it is able to be run on many different platforms including Mac OS, Windows and Linux systems. This is important to this artifact because the final implementation is intended to be run on a small system such as a Raspberry Pi so that it can be placed in a room and run permanently. It also  
+Arguably the most important tool used for the creation of the project is the programming language itself. In the case of this project, the language used was Python \citep{Python}. This language was used for many reasons. Firstly, it is compatible with many languages which are useful to the project. This includes the OpenCV library which is vital to the project \citep{OpenCV}. Python was also used because it is able to be run on many different platforms including Mac OS, Windows and Linux systems. This is important to this artifact because the final implementation is intended to be run on a small system such as a Raspberry Pi so that it can be placed in a room and run permanently. It also a fast language to write, not requiring as many lines of code to accomplish a task as would be required in a language such as C++. This allows for faster development which can be more effectively partnered with an agile Software Engineering Methodology.    
 
-The OpenCV library is used in some way for all components of the artefact which deal with video or image files. This library was chosen as it is the industry standard for computer vision libraries "companies like Google, Yahoo, Microsoft, Intel..." \citep{OpenCV}. 
+The OpenCV library is used in some way for all components of the artefact which deal with video or image files. This library was chosen as it is the industry standard for computer vision libraries "companies like Google, Yahoo, Microsoft, Intel..." \citep{OpenCV}. Without the use of this library the project would be almost impossible to complete, especially within the timescale for this project to be completed. The scope of the project would increase by many orders of magnitude if all of the libraries' functions were rewritten for this project. Using OpenCV for this purpose also has another benefit, the library is written in C++ \citep{OpenCV} which executes much faster than the Python code as it is compiled to an executable file rather than being interpreted at runtime. This allows for the program have much higher performance than if it was entirely constructed of Python code.
 
-The overall timespan of the project was managed using a Gantt Chart which was planned at the beginning of the project. 
+The software used to write the code is also very important to both the final artefact itself and the efficiency at which it is made. The Python code for this project was written entirely within Microsoft's Visual Studio Code application for Mac OS \citep{VisualStudioCode}. This software provides a large amount of features for writing in many different languages including the Python language used for this project. The simplest of these features is the syntax highlighting which helps to make the different parts of the code easier to read. An example of the version of Visual Studio Code used is shown in Appendix A: Figure \ref{fig:VSCode}. The software can also show any errors which may be present in the code. It also features an integrated bash terminal which is useful for quickly running the python code and backing up the code base using Git Version Control (this will be discussed in more detail later).
+
+Using version control and safely backing up a code base can be a vital part of any programming project. The Python code and other related files were version controlled and backed up securely using Git. An example of the Git usage is shown in Appendix A: Figure \ref{fig:GitCommitPush} illustrating all the commands necessary for a 'git commit' and 'git push'.
+
+At the beginning of the project Gantt Charts were used to plan how the available time was going to be used though out the development process
 
 \chapter{Design, Development and Evaluation}
 
@@ -143,7 +147,29 @@ The overall timespan of the project was managed using a Gantt Chart which was pl
 %Appendices
 \appendix
 \addcontentsline{toc}{chapter}{Appendices}
-\section{A}
-\section{B}
+\section{Appendix A}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale = 0.33]{Original_gantt_chart.png}
+ \caption{Original Gantt Chart for the project timescale}
+ \label{fig:OriginalGantt}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale = 0.4]{gitpush.png}
+ \caption{Example of git commit and push commands}
+ \label{fig:GitCommitPush}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale = 0.4]{VSCode.png}
+ \caption{Example of Python code in Visual Studio Code with Syntax Highlighting}
+ \label{fig:VSCode}
+\end{figure}
+
+\section{Appendix B}
 
 \end{document}
