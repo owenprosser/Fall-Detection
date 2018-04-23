@@ -17,8 +17,8 @@
 \fancyfoot{}
 \renewcommand{\footrulewidth}{0.0pt}
 \renewcommand{\headrulewidth}{0.0pt}
-\lhead{CMP3060M - Project
-Assignment 2 - Project Report}
+\lhead{CMP3060M - Project - 
+Assessment Item 2 - Project Report}
 \rhead{}
 \fancyfoot[R]{\thepage}
 \fancyfoot[L]{PRO14514822 - Owen Prosser}
@@ -93,7 +93,7 @@ An iterative Agile methodology is advantageous over an non-agile methodology lik
 \section{Software Development}%----------------------------------------------
 When creating any piece of software in any confined timescale it is important that there is some system for creating the software in an efficient manner. In order to do this effectively it has be managed within the limitations of the project at hand. This project has many factors which impact the available software engineering methodologies could be effectively employed to increase the speed of development and improve the quality of the artefact in relation to its original aim and objectives. The main factors which affected how this development of the project was carried out were that, firstly, this was a project for one individual to complete, it had a very strict deadline for completion which could not be extended, there were many other unrelated tasks which need to be completed in parallel, and also there were many unfamiliar components to be used for the development of the system which needed specific time set aside to be researched and learned how to be used. This project did however have one quality to the benefit of various Software Engineering Methodologies; the project had very well defined requirements from the beginning which can be vital during the planning stages which are an important part of many methodologies.
 
-The oldest and still one of the most commonly used development methodologies is the Waterfall method \citep{shaydulin2017agile}. This methodology was not used for a number of reasons. Firstly, as the time to complete this project was limited the Waterfall methodology could have contributed incorrectly allocating time to certain areas of the project where it was not as needed as in others. This would have been due to the strictly linear structured nature of the methodology dictating that some parts of the project (such as requirement gathering and analysis) had to be completed before other stages could begin \citep{shaydulin2017agile}. This would have been an issue for this project as it carried out by an individual with other concerns during the development. Without being able to switch between different tasks and areas of the project as the available time permitted within a busy schedule the development could have stagnated. The Waterfall methodology has a rigid structure which does not allow the developer(s) to repeat a stage without completing all subsequent stages until the end of the cycle \citep{WaterfallPresentation} this would not allow for the software to be tested during the development as this would have to added as an additional stage at the end of the Waterfall cycle. This would have been detrimental to the development of the artefact because it relied on testing throughout the development to ensure that it was functioning correctly and any new features that had been added since the last set of tests had not introduced any new bugs.
+The oldest, and still one of the most commonly used development methodologies, is the Waterfall method \citep{shaydulin2017agile}. This methodology was not used for a number of reasons. Firstly, as the time to complete this project was limited the Waterfall methodology could have contributed incorrectly allocating time to certain areas of the project where it was not as needed as in others. This would have been due to the strictly linear structured nature of the methodology dictating that some parts of the project (such as requirement gathering and analysis) had to be completed before other stages could begin \citep{shaydulin2017agile}. This would have been an issue for this project as it carried out by an individual with other concerns during the development. Without being able to switch between different tasks and areas of the project as the available time permitted within a busy schedule the development could have stagnated. The Waterfall methodology has a rigid structure which does not allow the developer(s) to repeat a stage without completing all subsequent stages until the end of the cycle \citep{WaterfallPresentation} this would not allow for the software to be tested during the development as this would have to added as an additional stage at the end of the Waterfall cycle. This would have been detrimental to the development of the artefact because it relied on testing throughout the development to ensure that it was functioning correctly and any new features that had been added since the last set of tests had not introduced any new bugs.
 
 One common methodology that could be applied to the project is Extreme-Programming (XP). Elements of this methodology were used during the development of the artefact. This was because "XP keeps short development cycles with incremental design and planning" \citep{XPsharma2016analysis} allowing the artefact to developed in small sections which could be individually designed and tested. XP "follows a ... testing strategy and restricts the propagation of the risk in the later stages" \citep{XPsharma2016analysis}. This allowed the addition of features to carry little risk of delay. If this had been done using a Waterfall methodology the software would have to be mostly completed before any tests could be carried out, increasing the time needed to resolve any issues that may be found as there would have been a larger code base to work on. This is described by \cite{XPsharma2016analysis} as the Waterfall or other non-agile methodology "tend to develop a faulty system". In addition to this XP has the flexibility to "accommodate the implementation of functionality" \citep{XPsharma2016analysis} which was useful as the artefact was developed in stages adding one feature at a time which was then tested. The increase in development speed is shown in figure \ref{fig:XPvsWater}. However not all aspects of XP were used, as there are multiple which did not apply to the specific aspects of this project. For example "XP is a software methodology that focuses on the pair programming" and "encourages a high degree of interactions between team members" \citep{XPsharma2016analysis} which of course could not be used as this was a project entirely completed by one individual. Also Extreme Programming "adapts [to] the changes in the project"
 
@@ -110,7 +110,7 @@ This project had many limiting factors which dictated which parts of the develop
 
 \section{Tool-Sets and Machine Environments}
 
-The tools used in a project are very important to the finished artefact. This section will document the tools used as well as how and why they were chosen for their respective roles in the project.
+The tools used in any project are very important to the finished artefact. This section will document the tools used as well as how, and why, they were chosen for their respective roles in the project.
 
 Arguably the most important tool used for the creation of the project is the programming language itself. In the case of this project, the language used was Python \citep{Python}. This language was used for many reasons. Firstly, it is compatible with many languages which are useful to the project. This includes the OpenCV library which is vital to the project \citep{OpenCV}. Python was also used because it is able to be run on many different platforms including Mac OS, Windows and Linux systems. This is important to this artifact because the final implementation is intended to be run on a small system such as a Raspberry Pi so that it can be placed in a room and run permanently. It also a fast language to write, not requiring as many lines of code to accomplish a task as would be required in a language such as C++. This allows for faster development which can be more effectively partnered with an agile Software Engineering Methodology.    
 
@@ -118,13 +118,28 @@ The OpenCV library is used in some way for all components of the artefact which 
 
 The software used to write the code is also very important to both the final artefact itself and the efficiency at which it is made. The Python code for this project was written entirely within Microsoft's Visual Studio Code application for Mac OS \citep{VisualStudioCode}. This software provides a large amount of features for writing in many different languages including the Python language used for this project. The simplest of these features is the syntax highlighting which helps to make the different parts of the code easier to read. An example of the version of Visual Studio Code used is shown in Appendix A: Figure \ref{fig:VSCode}. The software can also show any errors which may be present in the code. It also features an integrated bash terminal which is useful for quickly running the python code and backing up the code base using Git Version Control (this will be discussed in more detail later).
 
-Using version control and safely backing up a code base can be a vital part of any programming project. The Python code and other related files were version controlled and backed up securely using Git. An example of the Git usage is shown in Appendix A: Figure \ref{fig:GitCommitPush} illustrating all the commands necessary for a 'git commit' and 'git push'.
+Using version control and safely backing up a code base can be a vital part of any programming project. The Python code and other related files were version controlled and backed up securely using Git \citep{Git}. This system was chosen as it offers many version control features such as the ability to roll back to previous versions, clone the repository and work on the project multiple computers, and have a secure off-site backup in case of an emergency for some examples. This was chosen over other backup solutions such as Zip-file backups or cloud services such as Dropbox for multiple reasons. Firstly, it is the industry standard method of backing up source code and is used in the vast majority of software development situations. In one survey 88.4\% of Professional Software Developers responded that they user Git for their Version Control \citep{DeveloperSurvey}. It also offers much more resilience than other backup methods as it much less likely that the backed-up files would be deleted as it cannot be done with mouse click or short key combination like zip-file or other cloud backup could be. Even if the latest version was deleted any other computers which have cloned the repository and kept up to date would still have the code base intact. An example of the Git usage is shown in Appendix A: Figure \ref{fig:GitCommitPush} illustrating all the commands necessary for a 'git commit' and 'git push'.
 
-At the beginning of the project Gantt Charts were used to plan how the available time was going to be used though out the development process
+The Git Repository was hosted on GitHub which acted as more than just a Git Server host \citep{GitHub} it also had some features which were useful to the project. One of the main useful features is the issue tracker which is used to track any bugs or other issues in the software that need to be fixed and acts as the helpful reminder. GitHub was used because it is the largest of the Git repository hosting services and most widely used by Professional Software Developers \citep{GitHubMarketShare}. A Screen shot of the GitHub Repository is shown in Appendix A: figure \ref{fig:GitRepo}.
+
+At the beginning of the project Gantt Charts were used to plan how the available time was going to be used though out the development process. The required features of the artefact were broken down and separated over the available time until the deadline to give each feature its timescale for completion. This original Gantt Chart is shown in Appendix A: Figure \ref{fig:OriginalGantt}. 
 
 \chapter{Design, Development and Evaluation}
 
 \section{Requirements Elicitation and Analysis}
+
+\begin{enumerate}
+   \item Functional Requirements
+   \begin{itemize}
+     \item text
+     \item text
+   \end{itemize}
+   \item Non-Functional Requirements
+    \begin{itemize}
+     \item text
+     \item text
+    \end{itemize}
+\end{enumerate}
 
 \section{Design}
 
@@ -168,6 +183,13 @@ At the beginning of the project Gantt Charts were used to plan how the available
  \includegraphics[scale = 0.4]{VSCode.png}
  \caption{Example of Python code in Visual Studio Code with Syntax Highlighting}
  \label{fig:VSCode}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale = 0.14]{GitRepo.png}
+ \caption{Screen shot of the Git Repository Hosted on GitHub.com}
+ \label{fig:GitRepo}
 \end{figure}
 
 \section{Appendix B}
