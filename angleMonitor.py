@@ -27,7 +27,7 @@ class angleMonitor:
                 ellipse = cv2.fitEllipse(maxContour)
                 cv2.ellipse(frame,ellipse,(0,255,0),2)
                 cv2.line(frame,(cols-1,righty),(0,lefty),(0,0,255),2)
-                screenText = 'Angle: '+str(angle)+' maxArea: '+str(maxArea)
+                screenText = 'Angle: '+str(angle)#+' maxArea: '+str(maxArea)
             else:
                 screenText = "Contour area too small: "+str(maxArea)
         else:

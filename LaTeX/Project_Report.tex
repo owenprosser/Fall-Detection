@@ -212,14 +212,13 @@ These classes and their interactions are shown in Figure \ref{fig:UMLClassDiagra
 
 \pagebreak
 
-\section{Development of the Project}
-
+\section{Development}
 The development of the system was done in an iterative manner divided into many sections or iterations. Each print consisted of the development of a small feature or part of the system followed by testing the section which had just been implemented. The tests ensured that the new code added functioned correctly and did not interfere and cause additional bugs in the preexisting code base.
 
-The the order in which the features were implemented in each iteration was based on the importance of the feature and whether it was required before another feature could be added. For example the Silhouette Angle Detection functionality had to be added before the Fall Detection functionality. The five iterations which collectively make up the development of the Fall-Detection System were:
+The the order in which the features were implemented in each iteration was based on the importance of the feature and whether it was required before another feature could be added. For example the Silhouette Angle Detection functionality had to be added before the Fall Detection functionality. The five feature each to be added in its own iteration, which collectively make up the development of the Fall-Detection System, were:
 
 \begin{enumerate}
-\item Set up Python files and Classes, import and display video feed.
+\item Install OpenCV library, Set up Python files and Classes, import and display video feed.
 \item Effectively remove the background from the video leaving only the silhouette of the user (if the user is in the frame of the video).
 \item Determine the angle of the remaining silhouette.
 \item Determine if a fall has occurred.
@@ -227,8 +226,40 @@ The the order in which the features were implemented in each iteration was based
 \end{enumerate}
 
 \subsection{Iteration 1}
+
+The features to be added in the first development iteration of project were relatively simple. This part was the development was just concerned with creating the necessary Python files and installing the OpenCV library which was installed using Homebrew \citep{Homebrew}. The system was created across three different Python ('.py') files to keep the code base tidier and easier to maintain. These were imported using Python's 'import' functionality so that the classes contained in each file could be accessed as if they were all contained within the same file. These imports as well as the required library imports are shown in Listing \ref{PythonImports}. A screen shot showing the files created for the project is shown in Appendix B figure \ref{fig:requiredFiles}. 
+
+\begin{listing}
+\begin{minted}{Python}
+import cv2, numpy as np
+import angleMonitor, fallAction
+\end{minted}
+\caption{Python code for importing libraries and other '.py' files.}
+\label{PythonImports}
+\end{listing}
+
+The video feed can be displayed using the \textit{videoCapture()} and \textit{imshow()} functions of the OpenCV library. This is shown in Appendix B: Listing \ref{displayInputVideo}.
+
+\subsection{Iteration 2}
+
+The second iteration focused on removing the background from the video stream. This could be done using the functions available in the OpenCV, although there were multiple background subtraction algorithms algorithms available in the library. The available algorithms were:
+
+\begin{itemize}
+  \item BackgroundSubtractorMOG
+  \item BackgroundSubtractorMOG2
+  \item BackgroundSubtractorGMG
+\end{itemize}
+
+The algorithm which was used was \textit{BackgroundSubtractorMOG2} as this performed the best background subtraction and also had acceptable performance, removing the background from each frame without too much delay. This algorithm was also combined with the Morphological Operations Dilate and Erode, as well as binary thresholding to remove any noise which was left behind after the \textit{backgroundSubtractionMOG2} algorithm. The end result of the background subtraction in conjunction with the Morphological Operations is shown in Appendix B: Figure \ref{fig:backgroundSub} and a snippet of the Python code behind this is shown in Appendix B: Listing \ref{bgSubPython}.
+
+\subsection{Iteration 3}
+
+This development iteration focused on determining the angle of the remaining silhouette in the image. This was done using three of the available functions of OpenCV. Firstly, it needed to be determined whether the remaining non-zero pixels in the image array constituted a silhouette being present. This was done by measuring the area of the the single area. The required area range which a human would occupy was found using trial and error. If an object is present in the frame inside this area range it is assumed to be a human figure. An ellipse is placed around this figure using OpenCV's \textit{fitEllipse()} function and is displayed on the video output for testing. A line is then placed through the Ellipse at the widest point. The angle of this line will then be equal to the angle at which the person is positioned in the frame. The result of this angle detection is shown in Appendix B: Figure \ref{fig:angleDetectionExample} and a code snippet of the \textit{angleDetection()} function is in Appendix B: Listing \ref{angleDetectionPython}.
+
 \pagebreak
 \section{Testing}
+
+
 
 \section{Operations and Maintenance}
 
@@ -245,8 +276,8 @@ The the order in which the features were implemented in each iteration was based
 
 %Appendices
 \appendix
-\addcontentsline{toc}{chapter}{Appendices}
-\section{Appendix A}
+\section{Appendices}
+\subsection{Appendix A}
 
 \begin{figure}[H]
  \centering
@@ -276,6 +307,105 @@ The the order in which the features were implemented in each iteration was based
  \label{fig:GitRepo}
 \end{figure}
 
-\section{Appendix B}
-\LaTeX
+\subsection{Appendix B}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale = 0.5]{requiredFiles.png}
+ \caption{'.py' and other files needed for the system.}
+ \label{fig:requiredFiles}
+\end{figure}
+
+\begin{listing}
+\begin{minted}{Python}
+while(cap != None):
+  cap = cv2.VideoCapture(0)
+  if (self.curFrame % 1 == 0):
+    ret, frame = cap.read()
+    cv2.imshow("Current Frame", frame)
+    self.curFrame += 1
+    k = cv2.waitKey(30) & 0xff
+  if k == 27:
+  	break
+cap.release()
+cv2.destroyAllWindows()
+return 0
+\end{minted}
+\caption{Python code snippet to show live webcam feed using OpenCV.}
+\label{displayInputVideo}
+\end{listing}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale = 0.22]{bgSubExample.png}
+ \caption{Screen shot showing the effectiveness of the backgroudSubtractorMOG2() algorithm with Morphological Operations.}
+ \label{fig:backgroundSub}
+\end{figure}
+
+\begin{listing}
+\begin{minted}{Python}
+def MOG(self):
+  cap = cv2.VideoCapture('video2.mp4')
+  fgbg = cv2.createBackgroundSubtractorMOG2(self.history, 
+  self.varThresh ,self.detectShadows)
+  while(cap != None):
+    if (self.curFrame % 1 == 0):
+      ret, frame = cap.read()
+      fgmask = fgbg.apply(frame,0)
+      bgrThresh = fgmask
+      _, bgrThresh = cv2.threshold(fgmask,250,255,cv2.THRESH_BINARY)
+      bgrThresh = cv2.erode(bgrThresh,self.kernel, iterations = 1)
+      bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_CLOSE, self.kernel)
+      bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_OPEN, self.kernel)
+      bgrThresh = cv2.dilate(bgrThresh,self.kernel, iterations = 1)
+      if cv2.countNonZero(bgrThresh) > 0:
+      	det.Detect(bgrThresh, self.curFrame)
+      self.curFrame += 1
+      k = cv2.waitKey(30) & 0xff
+      if k == 27:
+      	break
+cap.release()
+cv2.destroyAllWindows()
+return 0
+\end{minted}
+\caption{Python for Background Subtraction and Morphological Operations.}
+\label{bgSubPython}
+\end{listing}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale = 0.22]{angleExample.png}
+ \caption{Screen shot showing the output from the \textit{angleDetection()} function.}
+ \label{fig:angleDetectionExample}
+\end{figure}
+
+\begin{listing}
+\begin{minted}{Python}
+def Detect(self, frame, curFrame):
+  _, contours, hierarchy = cv2.findContours(frame,cv2.RETR_TREE,
+  cv2.CHAIN_APPROX_SIMPLE)
+  maxContour = max(contours, key = cv2.contourArea)
+  cnt = contours[0]
+
+  rows,cols = frame.shape[:2]
+  [vx,vy,x,y] = cv2.fitLine(maxContour, cv2.DIST_L2,0,0.01,0.01)
+  lefty = int((-x*vy/vx) + y)
+  righty = int(((cols-x)*vy/vx)+y)
+
+  frame = cv2.cvtColor(frame,cv2.COLOR_GRAY2RGB)
+  screenText = ""
+
+  if len(maxContour) > 4:
+    (x,y),(MA,ma),angle = cv2.fitEllipse(maxContour)
+    maxArea = cv2.contourArea(maxContour)
+    print(maxArea)
+    if maxArea > 100:
+      ellipse = cv2.fitEllipse(maxContour)
+      cv2.ellipse(frame,ellipse,(0,255,0),2)
+      cv2.line(frame,(cols-1,righty),(0,lefty),(0,0,255),2)
+      screenText = 'Angle: '+str(angle)
+\end{minted}
+\caption{Python code for angle detection.}
+\label{angleDetectionPython}
+\end{listing}
 \end{document}
