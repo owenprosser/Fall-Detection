@@ -10,6 +10,7 @@
 \usepackage{float}
 \usepackage{afterpage}
 \usepackage{appendix}
+\usepackage{minted}
 %Fancy Header-----
 \usepackage{fancyhdr}
 \setlength{\headheight}{14pt}%
@@ -48,7 +49,7 @@ Assessment Item 2 - Project Report}
 \maketitle
 
 \begin{abstract}
-\emph{Need to write an abstract...}
+\emph{The overall aim of this project is to create a Fall Detection System using the Python programming language and its OpenCV library. This system is intended for to assist families, or care-providing professionals, who are responsible for the well-being of the elderly but cannot for whatever reason monitor them at all times. It is designed to alert any kind of care-giver in the event that an elderly person has had a fall and potentially hurt themselves and may require medical attention, or just some reassurance and compassion.}
 \end{abstract}
 
 %\afterpage{\blankpage}
@@ -56,10 +57,6 @@ Assessment Item 2 - Project Report}
 \tableofcontents
 
 %\afterpage{\blankpage}
-
-\chapter{Introduction}
-The overall aim of this project is to create a Fall Detection System using the Python programming language and its OpenCV library. This system is intended for to assist families, or care-providing professionals, who are responsible for the well-being of the elderly but cannot for whatever reason monitor them at all times. It is designed to alert any kind of care-giver in the event that an elderly person has had a fall and potentially hurt themselves and may require medical attention, or just some reassurance and compassion.  
-
 
 \chapter{Literature Review} %------------------------------------------------
 \section{Background}
@@ -97,7 +94,7 @@ The oldest, and still one of the most commonly used development methodologies, i
 
 One common methodology that could be applied to the project is Extreme-Programming (XP). Elements of this methodology were used during the development of the artefact. This was because "XP keeps short development cycles with incremental design and planning" \citep{XPsharma2016analysis} allowing the artefact to developed in small sections which could be individually designed and tested. XP "follows a ... testing strategy and restricts the propagation of the risk in the later stages" \citep{XPsharma2016analysis}. This allowed the addition of features to carry little risk of delay. If this had been done using a Waterfall methodology the software would have to be mostly completed before any tests could be carried out, increasing the time needed to resolve any issues that may be found as there would have been a larger code base to work on. This is described by \cite{XPsharma2016analysis} as the Waterfall or other non-agile methodology "tend to develop a faulty system". In addition to this XP has the flexibility to "accommodate the implementation of functionality" \citep{XPsharma2016analysis} which was useful as the artefact was developed in stages adding one feature at a time which was then tested. The increase in development speed is shown in figure \ref{fig:XPvsWater}. However not all aspects of XP were used, as there are multiple which did not apply to the specific aspects of this project. For example "XP is a software methodology that focuses on the pair programming" and "encourages a high degree of interactions between team members" \citep{XPsharma2016analysis} which of course could not be used as this was a project entirely completed by one individual. Also Extreme Programming "adapts [to] the changes in the project"
 
-\begin{figure}[H]
+\begin{figure}
  \centering
  \includegraphics[scale = 0.45]{XP_vs_Waterfall.png}
  \caption{Table showing a comparison in development time for both Waterfall and XP 		methodologies \citep{XPsharma2016analysis}.}
@@ -149,26 +146,88 @@ The overall aim was abstracted into the objectives using research of the design 
 \begin{enumerate}
    \item Functional Requirements
    \begin{itemize}
-   	\item Build a system for alerting a family member, carer, or friend in the event of a fall being detected by the
+   	\item Alert a family member, carer, or friend in the event of a fall being detected by the
 system.
+  \item Input the video feed from the web cam into the software so that it can be processed. The video feed should also be displayed so that the quality of the video as well as the angle of the camera can be checked.
+      \item Remove the background from the video (using techniques found in the literature review) so that the silhouette of the user is left for the next stage of the program to process.
+      \item Use the resultant video from the background removal to detect the position of the user’s silhouette in the video feed.
+      \item Using the position of the silhouette an oval should be placed around it in the video.
+      \item Determine the angle at which the subject is standing (using the oval from the previous requirement).
    \end{itemize}
    \item Non-Functional Requirements
     \begin{itemize}
-     \item Input the video feed from the web cam into the software so that it can be processed. The video feed should also be displayed so that the quality of the video as well as the angle of the camera can be checked.
-    \item Remove the background from the video (using techniques found in the literature review) so that the silhouette of the user is left for the next stage of the program to process.
-    \item Use the resultant video from the background removal to detect the position of the user’s silhouette in the video feed.
-    \item Using the position of the silhouette an oval should be placed around it in the video.
-    \item To determine the angle at which the subject is standing using the calculated oval (this is also using
-techniques found in the literature review).
 	\item Test the system thoroughly to ensure that it can detect a fall whilst minimizing false positives.
-    \item The system must process the video in real-time so that there is not a growing back-log of video frames which could cause the system to fill it's available memory.
+    \item Process the video in real-time so that there is not a growing back-log of video frames which could cause the system to fill it's available memory.
     \end{itemize}
 \end{enumerate}
 
 \section{Design}
 
-\section{Development}
+The design of the Artefact began with a simple flow diagram (This initial flow chart is shown in Figure \ref{fig:basicFlowChart}). This shows the operation of the Fall-Detection System at a high level and without much detail. The system is divided into five main stages:
 
+\begin{enumerate}
+	\item The function to import the live video stream.
+    \item The function to remove the background from the current video frame leaving only the silhouette of the user.
+    \item The function to detect the angle of the silhouette in the frame.
+    \item The function to determine if the user has fallen using the change in the detected angle.
+    \item The function to trigger an alarm or alert in the event of a detected fall.
+\end{enumerate}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale = 0.4]{basicFlowChart.png}
+ \caption{Flow Chart showing the five main sections of the Fall-Detection System.}
+ \label{fig:basicFlowChart}
+\end{figure}
+
+\pagebreak
+The Flow Chart was used to design the overall architecture of the system. From the chart is was decided that the structure should be to contain four main classes which interact to perform the Fall-Detection and Alert System. The Four main classes were:
+\begin{itemize}
+\item backgroundRemoval()
+	\begin{itemize}
+	\item To remove the background from the current frame to leave the silhouette of the user.
+	\end{itemize}
+\item angleDetection()
+	\begin{itemize}
+	\item To detect the angle of the silhouette.
+	\end{itemize}
+\item fallDetection()
+	\begin{itemize}
+	\item Based on fast change in the angle detect potential falls.
+	\end{itemize}
+\item fallAlarm()
+	\begin{itemize}
+	\item Trigger an Alert in the event of a fall.
+	\end{itemize}
+\end{itemize}
+
+These classes and their interactions are shown in Figure \ref{fig:UMLClassDiagram}.
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale = 0.5]{UMLClassDiagram.png}
+ \caption{UML Class Diagram showing the four main classes of the Fall-Detection System.}
+ \label{fig:UMLClassDiagram}
+\end{figure}
+
+\pagebreak
+
+\section{Development of the Project}
+
+The development of the system was done in an iterative manner divided into many sections or iterations. Each print consisted of the development of a small feature or part of the system followed by testing the section which had just been implemented. The tests ensured that the new code added functioned correctly and did not interfere and cause additional bugs in the preexisting code base.
+
+The the order in which the features were implemented in each iteration was based on the importance of the feature and whether it was required before another feature could be added. For example the Silhouette Angle Detection functionality had to be added before the Fall Detection functionality. The five iterations which collectively make up the development of the Fall-Detection System were:
+
+\begin{enumerate}
+\item Set up Python files and Classes, import and display video feed.
+\item Effectively remove the background from the video leaving only the silhouette of the user (if the user is in the frame of the video).
+\item Determine the angle of the remaining silhouette.
+\item Determine if a fall has occurred.
+\item In the event of a fall send an email to the specified recipient.
+\end{enumerate}
+
+\subsection{Iteration 1}
+\pagebreak
 \section{Testing}
 
 \section{Operations and Maintenance}
@@ -182,6 +241,7 @@ techniques found in the literature review).
 \addcontentsline{toc}{chapter}{References}
 \bibliography{references.bib}
 \pagebreak
+\clearpage
 
 %Appendices
 \appendix
@@ -191,14 +251,14 @@ techniques found in the literature review).
 \begin{figure}[H]
  \centering
  \includegraphics[scale = 0.33]{Original_gantt_chart.png}
- \caption{Original Gantt Chart for the project timescale}
+ \caption{Original Gantt Chart for the planned project timescale.}
  \label{fig:OriginalGantt}
 \end{figure}
 
 \begin{figure}[H]
  \centering
- \includegraphics[scale = 0.4]{gitpush.png}
- \caption{Example of git commit and push commands}
+ \includegraphics[scale = 0.55]{gitpush.png}
+ \caption{Example of git commit and push commands.}
  \label{fig:GitCommitPush}
 \end{figure}
 
@@ -212,10 +272,10 @@ techniques found in the literature review).
 \begin{figure}[H]
  \centering
  \includegraphics[scale = 0.14]{GitRepo.png}
- \caption{Screen shot of the Git Repository Hosted on GitHub.com}
+ \caption{Screen shot of the Git Repository Hosted on http://github.com.}
  \label{fig:GitRepo}
 \end{figure}
 
 \section{Appendix B}
-
+\LaTeX
 \end{document}
