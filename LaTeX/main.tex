@@ -66,13 +66,17 @@ According to the World Health Organisation a fall is the second leading cause of
 There are many currently available alarm systems for detecting human falls. These are generally split into two categories; user-activated systems where the user manually actives an alarm after a fall, and automatic systems where the alarm is triggered without user interaction once a fall is detected \citep{Alwan_A_smart_and_passive_floor-vibration}. 
 
 \section{Wearable Systems}
-A large portion of these automatic systems require the user to wear some equipment or carry a device with them at all times. One of these systems uses the accelerometer built into most modern smart phones to detect falls \citep{Tsinganos_A_smartphone-based_fall}. This works by sensing a sudden change in acceleration of the device. This system is fairly accurate with a precision of 91.8\% but has a few fundamental drawbacks. Firstly, the system's accuracy is affected by how the user is carrying the phone their body and of course it has a 0\% accuracy when the phone is not being carried or is not running the app. Many systems attack specialised hardware to the body of the user to measure their acceleration to detect falls. One of these systems uses a 'pendant' worn around the user's neck \citep{Santiago_Fall_detection_system}. The detection systems work in a similar way to the previous smartphone-app-bases system, this time with the pendant having dedicated hardware to measure changes in acceleration rather than using the multipurpose sensors built into a smartphone. This pendant then communicates with a smartphone app to trigger an alert if a fall is detected. This system has a very similar accuracy rate of 92\% but has the advantage that this should be very consistent as the detector will always be placed in the same area of the user's body compared to a smartphone. Another system uses a unit of sensors attached to the belt of the user \citep{Cruz_Fall_detection_wearable_device}. Whilst the accuracy of the system is not present in this paper it could be assumed that it would be similar to that of the previous system as they both feature a similar hardware implementation and methodology for establishing the acceleration threshold for determining a fall. Without evidence of a significant improvement in the quality of detection this system appears less practical than the previous system as the belted sensor array is bulkier and probably less comfortable to wear. These systems, however, still requires that the user wear a specialised piece of hardware at all times for the system to be functioning although this is better than having to carry a smartphone at all times. One severe limitation of all of the smartphone-based systems is that they require the user to already own a smartphone. This is a limiting factor because whilst smartphone adoption is on the rise among the over 55 age group only 30\% of this category currently own a smartphone \citep{Berenguer_Are_Smartphones_Ubiquitous}. The potential user base for a fall detection system could be greatly expanded if the system was functional on its own without being reliant on the user's smartphone connection to the Internet to trigger and alarm in the event of a fall. As many elderly people "are having difficulties in using modern smart devices" \citep{William_Cognitive_modeling_in_human_computer_interaction} a system which does not require the direct interaction of the user to function could be more effective at detecting falls as it can be passively running in the background in no way reliant on input from the user or their aptitude for technology.
+A large portion of these automatic systems require the user to wear specialised equipment or carry a device with them at all times. These devices are then used to motion and/or location of the user. One of these systems uses the accelerometer built into most modern smart phones to detect falls \citep{Tsinganos_A_smartphone-based_fall}. This works by sensing a sudden change in acceleration of the device. This system is fairly accurate with a precision of 91.8\% but has a few fundamental drawbacks. Firstly, the system's accuracy is affected by how the user is carrying the phone their body and of course it has a 0\% accuracy when the phone is not being carried or is not running the app. Many systems attack specialised hardware to the body of the user to measure their acceleration to detect falls. One of these systems uses a 'pendant' worn around the user's neck \citep{Santiago_Fall_detection_system}. The detection systems work in a similar way to the previous smartphone-app-bases system, this time with the pendant having dedicated hardware to measure changes in acceleration rather than using the multipurpose sensors built into a smartphone. This pendant then communicates with a smartphone app to trigger an alert if a fall is detected. This system has a very similar accuracy rate of 92\% but has the advantage that this should be very consistent as the detector will always be placed in the same area of the user's body compared to a smartphone. Another system uses a unit of sensors attached to the belt of the user \citep{Cruz_Fall_detection_wearable_device}. Whilst the accuracy of the system is not present in this paper it could be assumed that it would be similar to that of the previous system as they both feature a similar hardware implementation and methodology for establishing the acceleration threshold for determining a fall. Without evidence of a significant improvement in the quality of detection this system appears less practical than the previous system as the belted sensor array is bulkier and probably less comfortable to wear making them an "unfavourable choice for the elderly" \citep{fallDetectionInvestigation}. These systems, however, still requires that the user wear a specialised piece of hardware at all times for the system to be functioning although this is better than having to carry a smartphone at all times. One severe limitation of all of the smartphone-based systems is that they require the user to already own a smartphone. This is a limiting factor because whilst smartphone adoption is on the rise among the over 55 age group only 30\% of this category currently own a smartphone \citep{Berenguer_Are_Smartphones_Ubiquitous}. The potential user base for a fall detection system could be greatly expanded if the system was functional on its own without being reliant on the user's smartphone connection to the Internet to trigger and alarm in the event of a fall. As many elderly people "are having difficulties in using modern smart devices" \citep{William_Cognitive_modeling_in_human_computer_interaction} a system which does not require the direct interaction of the user to function could be more effective at detecting falls as it can be passively running in the background in no way reliant on input from the user or their aptitude for technology.
 
 \section{Passive Systems}
 Passive systems use a variety of sensing methods to the detect falls, including cameras, Infra-Red (IR) thermal-imaging cameras or ultra-sonic sensors. One of the most effective of these systems uses ultrasonic sensors to detect the area of the floor of a room which is covered by the user. When walking around the house normally the user's feet will only cover a small section of the floor space, in the event of a fall the user's body will cover a larger area of the floor, the system will detect this as a fall \citep{Chang_Human_fall_detection_based_on_event}. This system is very accurate with "up to 98\% precision" but does require a large amount of hardware to be installed around the perimeter of each room where fall detection is required. Another passive system uses a ceiling-mounted IR camera to gather a top down heat map of the room. \citep{Hayashida_The_use_of_thermal_ir_array}. When the user is moving around the monitored space normally the camera will perceive a small area being at a higher temperature than the rest of the room. If the user is to fall over in view of the thermal-camera their thermal signature will appear larger to camera allowing it to detect a fall. This system is effective at its goal of detecting falls with a "robust fall recognition rate (over 94\%)" but requite specialised thermal imaging hardware. This hardware, at its current cost, would be prohibitively expensive not only to this project but also to the system's end user. One other passive system utilises a circular array of 8 omni-directional microphones to detect a fall based on the noise of contact with the floor \citep{Li_A_microphone_array}. The main drawback of this type of system is that its accuracy is somewhat dependent on the acoustic conditions of the room. Any background noise from traffic or a television can mask the sound of a fall potentially allowing for it to be missed. This is not shared by systems which rely of camera (including thermal imaging cameras) as these are not affected by interference.
 
+\section{Detecting Falls}
+The Passive Fall-Detection systems detect when the user has fallen in a number of different ways. One system uses the angle of the Major and Minor axes of an "approximate ellipse" around the silhouette of the user \citep{rougier2007fall}. This is shown to work effectively as the referenced system was tested with 17 falls and correctly detected 15 of them \citep{rougier2007fall}. This solution is also relatively understandable and could potentially contribute to a straight-forward implementation as it requires no additional or specialised hardware. Some of the other passive systems require hardware other than a standard web cam to operate. For example one passive system uses the RGB-D (Red, Green, Blue and Depth) built into the Microsoft Kinect depth sensor \citep{kinectPassiveDetection}. Another visual camera-based system uses ceiling-mounted overhead cameras cameras \citep{nait2004activity}. This detection method work by "shape change analysis as well as inactivity detection" from an overhead view \citep{fallDetectionInvestigation}.
+
 \section{Conclusions}
 Many elements of the discussed research is relevant and will have an effect on this project. Firstly it is important that the system is active at all times as a fall can be severely damage the health and wellbeing of an elderly person. Consequently the Fall Detection System should not be configured or operated by the monitored person as they are likely to be old and thus not technologically adept. The user would also benefit from any specialised wearable-hardware being a requirement for the operation of the system. This would allow the user a fuller freedom of movement and more comfort in their home.
+This Passive system will also function using a method similar to that of \cite{rougier2007fall}. This is due to certain limitations of this project. In this project it is not feasible to acquire and use non-standard hardware as mention in Section 1.5 for reasons of both cost, and the time restrictions placed on the project. As it would take significant effort to configure and develop such a system.
 
 \chapter{Methodology}
 
@@ -181,6 +185,7 @@ The design of the Artefact began with a simple flow diagram (This initial flow c
 \end{figure}
 
 \pagebreak
+\noindent
 The Flow Chart was used to design the overall architecture of the system. From the chart is was decided that the structure should be to contain four main classes which interact to perform the Fall-Detection and Alert System. The Four main classes were:
 \begin{itemize}
 \item backgroundRemoval()
@@ -254,17 +259,27 @@ The algorithm which was used was \textit{BackgroundSubtractorMOG2} as this perfo
 
 \subsection{Iteration 3}
 
-This development iteration focused on determining the angle of the remaining silhouette in the image. This was done using three of the available functions of OpenCV. Firstly, it needed to be determined whether the remaining non-zero pixels in the image array constituted a silhouette being present. This was done by measuring the area of the the single area. The required area range which a human would occupy was found using trial and error. If an object is present in the frame inside this area range it is assumed to be a human figure. An ellipse is placed around this figure using OpenCV's \textit{fitEllipse()} function and is displayed on the video output for testing. A line is then placed through the Ellipse at the widest point. The angle of this line will then be equal to the angle at which the person is positioned in the frame. The result of this angle detection is shown in Appendix B: Figure \ref{fig:angleDetectionExample} and a code snippet of the \textit{angleDetection()} function is in Appendix B: Listing \ref{angleDetectionPython}.
+This development iteration focused on determining the angle of the remaining silhouette in the image. This was done using three of the available functions of OpenCV. Firstly, it needed to be determined whether the remaining non-zero pixels in the image array constituted a silhouette being present. This was done by measuring the area of the the single area. The required area range which a human would occupy was found using trial and error. If an object is present in the frame inside this area range it is assumed to be a human figure. An ellipse is placed around this figure using OpenCV's \textit{fitEllipse()} function and is displayed on the video output for testing. A line is then placed through the Ellipse along its major axis. The angle of this line will then be equal to the angle at which the person is positioned in the frame. The result of this angle detection is shown in Appendix B: Figure \ref{fig:angleDetectionExample} and a code snippet of the \textit{angleDetection()} function is in Appendix B: Listing \ref{angleDetectionPython}.
 
 \pagebreak
 \section{Testing}
-The testing of the Fall-Detection System used a mixture of White-box and Black-box testing. This was to ensure that the system was not only functioning to complete to complete the general task correctly but was also working efficiently.
+The testing of the Fall-Detection System used a mixture of White-box and Black-box testing. This was to ensure that the system was not only functioning to complete to complete the general task correctly but was also working efficiently. Each section of the system was tested interdependently following its implementation. Black-box testing was the primary testing method as the much of the system was built upon functions built into the OpenCV library making White-box testing difficult and perhaps unnecessary.
+
+The background subtraction was the first part of the system to be tested (it was also the first to be implemented). This was done as White-box test by watching the video output after it had been processed by the \textit{backgroundSubtraction()} function to see how effectively it was removing the background and minimising noise. An example of the output of the first iteration of the background removal is shown in Appendix C: Figure \ref{fig:bgSubNoise}. After and testing and making improvements by trial-and-error the final background removal function was able to remove the background pixels of the video whilst leaving effectively removing noise. This is shown in Appendix C: Figure \ref{fig:fallDetected}.
+
+Once the Angle-Detection system had been implemented it was also tested. This was done in a similar manner to the testing of the background subtraction. The output of the angle detection function was displayed both on the on-screen silhouette as well as in some text at the top of the output image to make this part of the system easier to debug (shown in Appendix C: Figure \ref{fig:fallDetected}). The angle of the on-screen line was measured to make certain that the measured angle matched the one being detected by the system.
+
+The final part of the Fall-Detection system to be implemented and tested was the fall detection system. This part could be tested using both White and Black-box testing methods. As the alerts system had not yet been created, when a fall was detected the program would output the string "Fall Detected" to the terminal. This allowed the testing of this functionality without having to implement the full alert system (this output after a detected fall is shown in Appendix C: Figure \ref{fig:fallDetectedOutput}. When ever the silhouette fell the the test video the output in the terminal read "Fall Detected", showing that it was functioning correctly.
 
 \section{Operations and Maintenance}
+
+The Fall-Detection system requires little maintenance once installed. This is because the system is designed to run without any direct interaction from the user (this was discussed previously in section 1.4) The only maintenance that could potentially be required would be to reboot the system in the event that it is not processing the live video feed in real-time and has run out of available memory storing this backlog of video frames.
 
 \chapter{Project Conclusion}
 
 \chapter{Reflective Analysis}
+
+%time, methodology, learning, research, problems installing the library
 
 %References
 \renewcommand\bibname{References}
@@ -278,14 +293,14 @@ The testing of the Fall-Detection System used a mixture of White-box and Black-b
 \section{Appendices}
 \subsection{Appendix A}
 
-\begin{figure}[H]
+\begin{figure}[h]
  \centering
  \includegraphics[scale = 0.33]{Original_gantt_chart.png}
  \caption{Original Gantt Chart for the planned project timescale.}
  \label{fig:OriginalGantt}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h]
  \centering
  \includegraphics[scale = 0.55]{gitpush.png}
  \caption{Example of git commit and push commands.}
@@ -407,4 +422,28 @@ def Detect(self, frame, curFrame):
 \caption{Python code for angle detection.}
 \label{angleDetectionPython}
 \end{listing}
+
+\subsection{Appendix C}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale = 0.6]{fallDetected.png}
+ \caption{Screen shot showing the output during the detection of a fall.}
+ \label{fig:fallDetected}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale = 0.6]{bgSubNoise.png}
+ \caption{Screen shot showing the remaining noise after processing by an early version of the background subtraction function.}
+ \label{fig:bgSubNoise}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[scale = 0.5]{fallDetectedOutput.png}
+ \caption{Screen shot showing the output to the terminal in the event of detecting a fall.}
+ \label{fig:fallDetectedOutput}
+\end{figure}
+
 \end{document}

@@ -4,5 +4,5 @@ class fallAction:
     init = False
     def check(self):
         if self.init == False:
-            print("fallAlarm")
+            #print("fallAlarm")
             self.init = True

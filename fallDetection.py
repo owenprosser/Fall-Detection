@@ -9,7 +9,7 @@ class backgroundSub:
     curFrame = 0
 
     def MOG(self):
-        cap = cv2.VideoCapture('video2.mp4')
+        cap = cv2.VideoCapture('testFall.mp4')
         fgbg = cv2.createBackgroundSubtractorMOG2(self.history, self.varThresh ,self.detectShadows)
 
         while(cap != None):
@@ -20,10 +20,10 @@ class backgroundSub:
                 bgrThresh = fgmask
                 _, bgrThresh = cv2.threshold(fgmask,250,255,cv2.THRESH_BINARY)
                 
-                bgrThresh = cv2.erode(bgrThresh,self.kernel, iterations = 3)
+                bgrThresh = cv2.erode(bgrThresh,self.kernel, iterations = 1)
                 bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_CLOSE, self.kernel)
                 bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_OPEN, self.kernel)
-                bgrThresh = cv2.dilate(bgrThresh,self.kernel, iterations = 3)
+                bgrThresh = cv2.dilate(bgrThresh,self.kernel, iterations = 1)
 
                 if cv2.countNonZero(bgrThresh) > 0:
                     det.Detect(bgrThresh, self.curFrame)
@@ -32,6 +32,7 @@ class backgroundSub:
                 self.curFrame += 1
                 k = cv2.waitKey(30) & 0xff
                 if k == 27:
+                    print("Fall Detected")
                     break
 
         cap.release()
