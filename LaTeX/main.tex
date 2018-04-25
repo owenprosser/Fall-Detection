@@ -261,6 +261,9 @@ The algorithm which was used was \textit{BackgroundSubtractorMOG2} as this perfo
 
 This development iteration focused on determining the angle of the remaining silhouette in the image. This was done using three of the available functions of OpenCV. Firstly, it needed to be determined whether the remaining non-zero pixels in the image array constituted a silhouette being present. This was done by measuring the area of the the single area. The required area range which a human would occupy was found using trial and error. If an object is present in the frame inside this area range it is assumed to be a human figure. An ellipse is placed around this figure using OpenCV's \textit{fitEllipse()} function and is displayed on the video output for testing. A line is then placed through the Ellipse along its major axis. The angle of this line will then be equal to the angle at which the person is positioned in the frame. The result of this angle detection is shown in Appendix B: Figure \ref{fig:angleDetectionExample} and a code snippet of the \textit{angleDetection()} function is in Appendix B: Listing \ref{angleDetectionPython}.
 
+\subsection{Iteration 4}
+
+
 \pagebreak
 \section{Testing}
 The testing of the Fall-Detection System used a mixture of White-box and Black-box testing. This was to ensure that the system was not only functioning to complete to complete the general task correctly but was also working efficiently. Each section of the system was tested interdependently following its implementation. Black-box testing was the primary testing method as the much of the system was built upon functions built into the OpenCV library making White-box testing difficult and perhaps unnecessary.
@@ -277,9 +280,24 @@ The Fall-Detection system requires little maintenance once installed. This is be
 
 \chapter{Project Conclusion}
 
-\chapter{Reflective Analysis}
+Most of the initial aims of the project were met during the development of the Fall-Detection System. The overall objective, to be able to detect a fall when in view of the system, was met to some degree.
 
-%time, methodology, learning, research, problems installing the library
+The System can detect falls but depending on the resolution of the video feed and the power of the hardware in which the system is running (as it is compatible with, and will run on multiple different systems) it may not run in real-time. This could cause instability, crashes, or other unexpected behavior.
+
+\chapter{Reflective Analysis}
+%time, methodology, research, problems installing the library, learning
+Looking back across the entire development of the project I can see that there are definitely areas which can be improved the next time I am working on any project, academically or otherwise.
+
+Firstly one of the easiest areas for improvement would be that of time management. This applies to all aspects of the project. Had the time given to develop the system been used for effectively, more features could have been added, achieving more of the initial aims and objectives. Given more time the additional features that would be added to the system would be to increase the reliability of the fall detection (using some of the methods discussed in the literature review or by performing some additional research) and to implement the alerts system so that an email can be sent to a carer or family member in the event of a fall. 
+
+More testing of the system should have been performed to establish how well it can detect falls (this would have helped me to meet the last of my objectives). To do this I would need to record multiple videos of people falling over as I have only been using one video to develop and test the system during the creation of the artefact.
+
+This improvement in time management could also be relevant to the methodology with which the artefact was developed. Breaking the project down into smaller sections for each iteration could have improved the time scale in which the artefact was made. The development was separated into four or five large sections each taking a week or more to complete. If I was to do this again I might break them into sections which could be completed in a few days, up to a week, to make them feel more achievable and limit the amount of time not working efficiently as I felt at times that the end of each stage was a long way off, contributing to the an increasing backlog towards the end of the project.
+
+I also feel that I had a performed more research in the early stages of the project it would have help greatly later on in the development stages. Having a greater idea of how the system was going to run, and what the structure of it would be, would have made it much easier to develop. This research would not just have to be of academic literature but also spending more time reading the documentation for OpenCV. This could have helped me identify a better or more appropriate library function to use for part of the system for example.
+
+
+If the desired goal of the project was to create the most complete artefact as I could in the time frame (which was not the entire goal of this project) it would be a reasonable decision next time around to chose to develop a system in an area which I have more experience. This would would help as I would have to perform less research and put more of the effort that I placed into fixing mistakes and bugs into adding more and improving the features of my artefact. I also, however, may not chose this approach in the future as I have enjoyed making something different to what have before and have learnt many valuable skills in the last year while developing the Fall-Detection system for this project.
 
 %References
 \renewcommand\bibname{References}
