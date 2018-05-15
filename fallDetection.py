@@ -1,8 +1,8 @@
-import cv2, numpy as np
+import cv2, numpy as np, time
 import angleMonitor, fallAction
 
 class backgroundSub:
-    history = 500
+    history = 150
     varThresh = 64
     detectShadows = True
     kernel = np.ones((3,3),np.uint8)
@@ -18,15 +18,17 @@ class backgroundSub:
 
                 fgmask = fgbg.apply(frame,0)
                 bgrThresh = fgmask
-                _, bgrThresh = cv2.threshold(fgmask,250,255,cv2.THRESH_BINARY)
+                _, bgrThresh = cv2.threshold(fgmask,254,255,cv2.THRESH_BINARY)
                 
-                bgrThresh = cv2.erode(bgrThresh,self.kernel, iterations = 1)
-                bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_CLOSE, self.kernel)
+                #bgrThresh = cv2.erode(bgrThresh,self.kernel, iterations = 1)
                 bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_OPEN, self.kernel)
+                bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_CLOSE, self.kernel)
                 bgrThresh = cv2.dilate(bgrThresh,self.kernel, iterations = 1)
+                bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_CLOSE, self.kernel)
+                bgrThresh = cv2.morphologyEx(bgrThresh, cv2.MORPH_CLOSE, self.kernel)
 
                 if cv2.countNonZero(bgrThresh) > 0:
-                    det.Detect(bgrThresh, self.curFrame)
+                    det.Detect(bgrThresh, self.curFrame, frame)
                 fall.check()
 
                 self.curFrame += 1
@@ -34,6 +36,8 @@ class backgroundSub:
                 if k == 27:
                     print("Fall Detected")
                     break
+                
+                time.sleep(0.033)
 
         cap.release()
         cv2.destroyAllWindows()
