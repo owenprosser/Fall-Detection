@@ -5,7 +5,8 @@ class angleMonitor:
     font = cv2.FONT_HERSHEY_PLAIN
 
     def Detect(self, frame, curFrame, origFrame):
-        print("angleMonitor",curFrame)
+        #print("angleMonitor",curFrame)
+        returnAngle = None
 
         _, contours, hierarchy = cv2.findContours(frame,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
         maxContour = max(contours, key = cv2.contourArea)
@@ -21,15 +22,19 @@ class angleMonitor:
 
         if len(maxContour) > 4:
             (x,y),(MA,ma),angle = cv2.fitEllipse(maxContour)
+            returnAngle = angle
             maxArea = cv2.contourArea(maxContour)
-            print(maxArea)
+            #print(maxArea)
             if maxArea > 100:
-                ellipse = cv2.fitEllipse(maxContour)
-                #cv2.ellipse(frame,ellipse,(0,255,0),2)
-                #cv2.line(frame,(cols-1,righty),(0,lefty),(0,0,255),2)
+                try:
+                    ellipse = cv2.fitEllipse(maxContour)
+                    #cv2.ellipse(frame,ellipse,(0,255,0),2)
+                    #cv2.line(frame,(cols-1,righty),(0,lefty),(0,0,255),2)
 
-                cv2.ellipse(origFrame,ellipse,(0,255,0),2)
-                cv2.line(origFrame,(cols-1,righty),(0,lefty),(0,0,255),2)
+                    cv2.ellipse(origFrame,ellipse,(0,255,0),2)
+                    cv2.line(origFrame,(cols-1,righty),(0,lefty),(0,0,255),2)
+                except OverflowError:
+                    print("OverflowError: signed integer is less than minimum")
                 
                 screenText = 'Angle: '+str(round(angle, 1))#+' maxArea: '+str(maxArea)
             else:
@@ -41,4 +46,5 @@ class angleMonitor:
         cv2.putText(origFrame,screenText ,(3,25), self.font, 2,(242, 238, 26),2,cv2.LINE_AA)
         cv2.imshow("Fall Detection", origFrame)
         cv2.imshow("Background Removal", frame)
-        time.sleep(0)
+
+        return returnAngle
